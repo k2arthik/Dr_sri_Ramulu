@@ -1,0 +1,326 @@
+{% load static %}
+{% load static tailwind_tags %}
+{% load django_browser_reload %}
+
+{% load custom_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{% static 'assets/logos/logo.png' %}" type="image/png">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <title>{% block title %}{% endblock title %} {% settings_value "PROJECT_TITLE" %}</title>
+    <meta name="description"
+        content="{% block description %}Building websites that brings you business{% endblock description %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="{% block socialTitle %}{% endblock socialTitle %} Project" />
+    <meta property="og:description"
+        content="{% block socialDescription %}Description Here{% endblock socialDescription %}" />
+    <meta property="og:type" content="{% block pageType %}website{% endblock pageType %}" />
+    <meta property="og:url" content="{% block pageLink %}{{request.build_absolute_uri}}{% endblock pageLink %}" />
+    <meta property="og:image"
+        content="{% block pageImage %}{{ request.scheme }}://{{request.get_host}}{% static 'assets/images/home/hiking4.jpg' %}{% endblock pageImage %}" />
+
+    <!-- Twitter -->
+    {% comment %}
+    `some of the meta tags specific to twitter has been dropped in favor of OG tags, Since twitter also supports OG tags
+    as fallback
+    https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
+    {% endcomment %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@">
+    {% comment %}
+    <meta name="twitter:title" content="{% block twitterTitle %}Project{% endblock twitterTitle %}">
+    <meta name="twitter:description"
+        content="{% block twitterDescription %}Description Here{% endblock twitterDescription %}"> {% endcomment %}
+    {% comment %}
+    <meta name="twitter:image" content="{% block pageImage %}http://www.example.com/image.jpg{% endblock pageImage %}">
+    {% endcomment %}
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    {% tailwind_css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={% settings_value " ANALYTICS_TAG_ID" %}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', '{% settings_value "ANALYTICS_TAG_ID" %}');
+    </script>
+
+    {% block head_tags %}
+    {% endblock head_tags %}
+
+</head>
+
+{% comment %}
+
+<body class="tw-min-h-[100vh]" data-bs-theme="dark"> {% endcomment %}
+
+    <body class="tw-min-h-[100vh] tw-w-full tw-bg-[#ffffff] tw-flex tw-flex-col">
+
+        <div id="toast" class="tw-p-2 tw-px-4 tw-bg-black tw-h-max tw-z-[5000] tw-fixed 
+                            tw-top-[5%] tw-left-[50%] tw-translate-x-[-50%] 
+                            tw-place-items-center
+                            tw-hidden tw-rounded-md
+                            tw-border-0 tw-text-white" role="alert">
+            <div class="tw-flex tw-gap-1">
+                <div class="toast-body" id="toast-body">
+
+                </div>
+                <button type="button" class="bi bi-x tw-text-lg" aria-label="Close"></button>
+            </div>
+        </div>
+
+        {% block navbar %}
+        <header
+            class="tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-z-[1000] tw-bg-white/90 tw-backdrop-blur-md tw-shadow-sm">
+            <nav class="tw-max-w-7xl tw-mx-auto tw-px-4 tw-h-[80px] tw-flex tw-items-center tw-justify-between">
+                <a href="{% url 'home' %}" class="tw-flex tw-items-center">
+                    <span class="tw-font-bold tw-text-2xl tw-text-[#1e3a5f]">Dr. Sri Ramulu K</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="tw-hidden lg:tw-flex tw-items-center tw-gap-10">
+                    <a href="{% url 'about' %}"
+                        class="tw-font-semibold tw-text-[#1e3a5f] hover:tw-text-blue-600 tw-transition-colors">About</a>
+
+                    <!-- Services Dropdown -->
+                    <div class="tw-relative tw-group">
+                        <a href="{% url 'services' %}"
+                            class="tw-font-semibold tw-text-[#1e3a5f] hover:tw-text-blue-600 tw-transition-colors tw-flex tw-items-center tw-gap-1">
+                            Services <i class="bi bi-chevron-down tw-text-[10px]"></i>
+                        </a>
+                        <div
+                            class="tw-absolute tw-top-full tw-left-0 tw-bg-white tw-shadow-2xl tw-rounded-2xl tw-py-4 tw-min-w-[280px] tw-opacity-0 tw-invisible group-hover:tw-opacity-100 group-hover:tw-visible tw-transition-all tw-duration-300">
+                            <a href="{% url 'service-detail' 'cardiac-imaging' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Cardiac
+                                Imaging</a>
+                            <a href="{% url 'service-detail' 'chronic-total-occlusions' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Chronic
+                                Total Occlusions</a>
+                            <a href="{% url 'service-detail' 'tavr-laa-closure' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">TAVR/LAA
+                                Closure</a>
+                            <a href="{% url 'service-detail' 'interventions-chd' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Interventions
+                                for CHD</a>
+                            <a href="{% url 'service-detail' 'coronary-interventions' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Coronary
+                                Interventions</a>
+                            <a href="{% url 'service-detail' 'peripheral-vascular-interventions' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Peripheral
+                                Interventions</a>
+                            <a href="{% url 'service-detail' 'pacemakers-devices' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Pacemakers
+                                & Devices</a>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'list-blogs' %}"
+                        class="tw-font-semibold tw-text-[#1e3a5f] hover:tw-text-blue-600 tw-transition-colors">Blogs</a>
+
+                    <!-- Awards Dropdown -->
+                    <div class="tw-relative tw-group">
+                        <a href="{% url 'awards' %}"
+                            class="tw-font-semibold tw-text-[#1e3a5f] hover:tw-text-blue-600 tw-transition-colors tw-flex tw-items-center tw-gap-1">
+                            Awards <i class="bi bi-chevron-down tw-text-[10px]"></i>
+                        </a>
+                        <div
+                            class="tw-absolute tw-top-full tw-left-0 tw-bg-white tw-shadow-2xl tw-rounded-2xl tw-py-4 tw-min-w-[200px] tw-opacity-0 tw-invisible group-hover:tw-opacity-100 group-hover:tw-visible tw-transition-all tw-duration-300">
+                            <a href="{% url 'awards' %}#awards-section"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Awards</a>
+                            <a href="{% url 'awards' %}#achievements-section"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Achievements</a>
+                            <a href="{% url 'awards' %}#publications-section"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Publications</a>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Dropdown -->
+                    <div class="tw-relative tw-group">
+                        <a href="#"
+                            class="tw-font-semibold tw-text-[#1e3a5f] hover:tw-text-blue-600 tw-transition-colors tw-flex tw-items-center tw-gap-1">
+                            Gallery <i class="bi bi-chevron-down tw-text-[10px]"></i>
+                        </a>
+                        <div
+                            class="tw-absolute tw-top-full tw-left-0 tw-bg-white tw-shadow-2xl tw-rounded-2xl tw-py-4 tw-min-w-[150px] tw-opacity-0 tw-invisible group-hover:tw-opacity-100 group-hover:tw-visible tw-transition-all tw-duration-300">
+                            <a href="{% url 'gallery-photos' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Photos</a>
+                            <a href="{% url 'gallery-videos' %}"
+                                class="tw-block tw-px-6 tw-py-3 tw-text-sm tw-text-gray-700 hover:tw-bg-blue-50 hover:tw-text-blue-600">Videos</a>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'contact-us' %}"
+                        class="tw-px-6 tw-py-2.5 tw-bg-[#1e3a5f] tw-text-white tw-rounded-full tw-font-semibold hover:tw-bg-blue-900 tw-transition-all tw-shadow-lg hover:tw-shadow-xl">Contact
+                        Us</a>
+                    <a href="{% url 'appointments' %}"
+                        class="tw-px-6 tw-py-2.5 tw-border-2 tw-border-[#1e3a5f] tw-text-[#1e3a5f] tw-rounded-full tw-font-semibold hover:tw-bg-[#1e3a5f] hover:tw-text-white tw-transition-all">Book
+                        a Demo</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:tw-hidden tw-text-3xl tw-text-[#1e3a5f]" onclick="toggleHeader()" id="collapse-btn">
+                    <i class="bi bi-list"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Navigation Side Panel -->
+            <div class="collapsable-header animated-collapse lg:tw-hidden tw-fixed tw-inset-0 tw-bg-[#1e3a5f] tw-z-[1001] tw-translate-x-full tw-transition-transform tw-duration-300"
+                id="collapsed-header-items">
+                <div class="tw-flex tw-flex-col tw-h-full tw-p-8 ">
+                    <div class="tw-flex tw-justify-between tw-items-start tw-mb-16">
+                        <img src="{% static 'assets/logos/logo1.png' %}" alt="logo"
+                            class="tw-h-12 tw-w-auto tw-brightness-0 tw-invert">
+                        <button class="tw-text-4xl tw-text-[#1e3a5f]" onclick="toggleHeader()">
+                            <i class="bi bi-x"></i></button>
+                    </div>
+                    
+                    <div class="tw-flex tw-flex-col tw-items-start  tw-gap-6">
+                        <a href="{% url 'home' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]"><ul>Home</ul></a>
+                        <a href="{% url 'about' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">About Us</a>
+                        <a href="{% url 'services' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">Services</a>
+                        <a href="{% url 'awards' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">Awards</a>
+                        <a href="{% url 'list-blogs' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">Blogs</a>
+                        <a href="{% url 'gallery-photos' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">Photos</a>
+                        <a href="{% url 'gallery-videos' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">Videos</a>
+                        <a href="{% url 'contact-us' %}" class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">Contact Us</a>
+                    </div>
+                    <br>
+                    <div class="tw-mt-auto tw-flex tw-gap-6 tw-text-2xl tw-text-[#1e3a5f]">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% endblock navbar %}
+
+        <div class="tw-w-full tw-h-full tw-mt-[50px]">
+            {% block content %}{% endblock content %}
+        </div>
+        <footer
+            class="tw-flex max-md:tw-flex-col tw-w-full tw-p-[5%] tw-px-[10%] tw-place-content-around tw-gap-12 tw-text-white tw-mt-auto tw-bg-[#1e3a5f]">
+            <div class="tw-h-full tw-w-[300px] tw-flex tw-flex-col tw-gap-6 tw-place-items-center max-md:tw-w-full">
+                <img src="{% static 'assets/images/home/dashboard.png' %}" alt="Dr. Sri Ramulu K"
+                    class="tw-max-w-[150px] max-md:tw-max-w-[120px] tw-rounded-xl tw-border-2 tw-border-white/20">
+
+                <div class="tw-text-center tw-text-gray-200 tw-text-sm tw-leading-relaxed">
+                    <p class="tw-font-bold tw-text-white tw-mb-2">Our Clinic</p>
+                    KIMS Hospital, Suite 402, Gachibowli Main Rd,<br> Hyderabad, Telangana 500032
+                    <br>
+                    <span class="tw-mt-2 tw-block">
+                        <i class="bi bi-telephone tw-mr-1"></i> +91 98765 43210
+                        <br>
+                        <i class="bi bi-envelope tw-mr-1"></i> contact@drramulu.com
+                    </span>
+
+                </div>
+                <div class="tw-flex tw-gap-4 tw-text-2xl">
+                    <a href="#" aria-label="Facebook" class="tw-text-white hover:tw-text-gray-300 tw-transition-colors">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="tw-text-white hover:tw-text-gray-300 tw-transition-colors">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+                    <a href="#" class="tw-text-white hover:tw-text-gray-300 tw-transition-colors"
+                        aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tw-h-full tw-w-[200px] tw-flex tw-flex-col tw-gap-4">
+                <h2 class="tw-text-xl tw-font-bold tw-text-white tw-mb-2">Quick Links</h2>
+                <div class="tw-flex tw-flex-col tw-gap-3 tw-text-gray-200">
+                    <a href="{% url 'home' %}" class="hover:tw-text-white tw-transition-colors">Home</a>
+                    <a href="{% url 'about' %}" class="hover:tw-text-white tw-transition-colors">About us</a>
+                    <a href="{% url 'services' %}" class="hover:tw-text-white tw-transition-colors">Services</a>
+                    <a href="{% url 'awards' %}" class="hover:tw-text-white tw-transition-colors">Achievements</a>
+                    <a href="{% url 'contact-us' %}" class="hover:tw-text-white tw-transition-colors">Contact Us</a>
+                </div>
+            </div>
+            <div class="tw-h-full tw-w-[200px] tw-flex tw-flex-col tw-gap-4">
+                <h2 class="tw-text-xl tw-font-bold tw-text-white tw-mb-2">Services</h2>
+                <div class="tw-flex tw-flex-col tw-gap-3 tw-text-gray-200">
+                    <a href="{% url 'service-detail' 'cardiac-imaging' %}"
+                        class="hover:tw-text-white tw-transition-colors">Cardiac Imaging</a>
+                    <a href="{% url 'service-detail' 'chronic-total-occlusions' %}"
+                        class="hover:tw-text-white tw-transition-colors">CTO Interventions</a>
+                    <a href="{% url 'service-detail' 'tavr-laa-closure' %}"
+                        class="hover:tw-text-white tw-transition-colors">TAVR/LAA</a>
+                    <a href="{% url 'service-detail' 'coronary-interventions' %}"
+                        class="hover:tw-text-white tw-transition-colors">Coronary Cases</a>
+                    <a href="{% url 'service-detail' 'pacemakers-devices' %}"
+                        class="hover:tw-text-white tw-transition-colors">Device Therapy</a>
+                </div>
+
+            </div>
+            <div class="tw-rounded-[1.5rem] tw-overflow-hidden tw-shadow-2xl tw-h-[0px] tw-border-8 tw-border-white">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6621226021283!2d78.38243542502128!3d17.42000871305282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb96aa9399e941%3A0x855d41d611b5c14b!2sKIMS%20Hospitals%2C%20Gachibowli!5e0!3m2!1sen!2sin!4v1737715000000!5m2!1sen!2sin"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            {% block footer %}
+            {% endblock footer %}
+        </footer>
+        <div class="tw-w-full tw-bg-[#162a45] tw-py-4 tw-text-center tw-text-sm tw-text-gray-400">
+            <p>© 2026 Dr. Sri Ramulu K. All rights reserved.</p>
+        </div>
+    </body>
+
+    {% comment %}
+    <script src="{% static " ./js/base.js" %}"></script> {% endcomment %}
+    <script>
+        // Timezone settings
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone; // e.g. "America/New_York"
+        document.cookie = "user_timezone=" + timezone;
+    </script>
+    {% comment %}
+    <script src="https://unpkg.com/quill-paste-smart@latest/dist/quill-paste-smart.js"></script> {% endcomment %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+        integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
+
+    <script>
+        // Use global variable
+    </script>
+
+    <script src="{% static './js/utils/elements.js' %}"></script>
+    <script src="{% static './js/utils/common.js' %}"></script>
+    <script src="{% static './js/utils/images.js' %}"></script>
+    <script src="{% static './js/utils/constants.js' %}"></script>
+    <script src="{% static './js/base.js' %}"></script>
+
+    {% block scripts %}{% endblock scripts %}
+
+</html>

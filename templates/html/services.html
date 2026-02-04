@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Services Header -->
+<section class="tw-w-full tw-pt-32 tw-pb-16 tw-bg-white">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-text-center tw-mb-20">
+            <h1 class="tw-text-6xl max-md:tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6 fade-in-up">What are the
+                services provided by doctor?</h1>
+            <div class="tw-w-32 tw-h-1.5 tw-bg-[#1e3a5f] tw-mx-auto tw-rounded-full fade-in-up delay-100"></div>
+        </div>
+
+        <div class="tw-relative">
+            <!-- Decorative Connection Line (Desktop) -->
+            <div
+                class="tw-hidden lg:tw-block tw-absolute tw-top-1/2 tw-left-[25%] tw-w-[70%] tw-h-px tw-bg-gradient-to-r tw-from-blue-600/50 tw-via-blue-600/20 tw-to-transparent tw-z-0">
+            </div>
+
+            <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-8 tw-relative tw-z-10">
+                <!-- Box 1: Doctor's Image Portrait -->
+                <div
+                    class="tw-group tw-relative tw-overflow-hidden tw-rounded-[2.5rem] tw-shadow-2xl tw-h-[500px] fade-in-up">
+                    <img src="{% static './assets/images/home/dashboard.png' %}" alt="Dr. Sri Ramulu K"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    <div
+                        class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-[#1e3a5f] tw-via-[#1e3a5f]/20 tw-to-transparent">
+                    </div>
+                    <div class="tw-absolute tw-bottom-10 tw-left-8 tw-right-8 tw-text-white">
+                        <span
+                            class="tw-bg-blue-600 tw-px-4 tw-py-1 tw-rounded-full tw-text-[10px] tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4 tw-inline-block">Lead
+                            Consultant</span>
+                        <h3 class="tw-text-3xl tw-font-bold">Dr. Sri Ramulu K</h3>
+                        <p class="tw-text-blue-200 tw-text-lg">Interventional Cardiologist</p>
+                    </div>
+                </div>
+
+                <!-- Boxes 2-8: Services -->
+                {% for service in services %}
+                <a href="{% url 'service-detail' service.slug %}"
+                    class="tw-group tw-p-10 tw-rounded-[2.5rem] tw-bg-white tw-border tw-border-gray-100 tw-flex tw-flex-col tw-h-[500px] hover:tw-bg-[#1e3a5f] hover:tw-shadow-3xl tw-transition-all tw-duration-500 hover:-tw-translate-y-4 fade-in-up">
+                    <div
+                        class="tw-w-20 tw-h-20 tw-bg-blue-50 tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-mb-10 tw-shadow-sm group-hover:tw-bg-white/10 tw-transition-colors">
+                        <i class="bi {{ service.icon }} tw-text-[#1e3a5f] tw-text-4xl group-hover:tw-text-white"></i>
+                    </div>
+                    <h3
+                        class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6 group-hover:tw-text-white line-clamp-2">
+                        {{ service.title }}
+                    </h3>
+                    <p class="tw-text-gray-600 tw-leading-relaxed group-hover:tw-text-blue-100 tw-text-lg">
+                        {{ service.description }}
+                    </p>
+                    <div
+                        class="tw-mt-auto tw-flex tw-items-center tw-gap-3 tw-text-[#1e3a5f] tw-font-bold group-hover:tw-text-white">
+                        <span class="tw-text-xs tw-uppercase tw-tracking-widest">Explore details</span>
+                        <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-3"></i>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+</section>
+
+<!-- Standard Procedure Timeline Section -->
+<section class="tw-w-full tw-py-32 tw-bg-gray-50 tw-overflow-hidden">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-text-center tw-mb-24">
+            <h2 class="tw-text-5xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Standard Care Procedure</h2>
+            <div class="tw-w-24 tw-h-1.5 tw-bg-blue-600 tw-mx-auto tw-rounded-full"></div>
+        </div>
+
+        <div class="timeline-container tw-relative">
+            <!-- Vertical Line (Desktop) -->
+            <div
+                class="tw-hidden lg:tw-block tw-absolute tw-left-1/2 tw-top-0 tw-bottom-0 tw-w-1.5 tw-bg-gray-200 -tw-translate-x-1/2 tw-rounded-full">
+            </div>
+
+            <div class="tw-flex tw-flex-col tw-gap-24 lg:tw-gap-0">
+                <!-- Step 01 -->
+                <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center">
+                    <div class="tw-flex-1 lg:tw-pr-24 lg:tw-text-right tw-order-2 lg:tw-order-1">
+                        <div
+                            class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100 fade-in-up">
+                            <span
+                                class="tw-text-blue-600 tw-font-black tw-text-sm tw-uppercase tw-tracking-widest tw-mb-4 tw-inline-block">Step
+                                01</span>
+                            <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Official Registration</h3>
+                            <p class="tw-text-gray-600 tw-text-lg tw-leading-relaxed">
+                                Our welcoming team handles your check-in, creating your digital portfolio and ensuring
+                                all documents are in place.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tw-z-10 tw-order-1 lg:tw-order-2 tw-mb-8 lg:tw-mb-0">
+                        <div
+                            class="tw-w-20 tw-h-20 tw-bg-[#1e3a5f] tw-rounded-full tw-flex tw-items-center tw-justify-center tw-shadow-2xl tw-border-8 tw-border-white">
+                            <i class="bi bi-person-plus tw-text-3xl tw-text-white"></i>
+                        </div>
+                    </div>
+                    <div class="tw-flex-1 lg:tw-pl-24 tw-hidden lg:tw-block tw-order-3"></div>
+                </div>
+
+                <!-- Step 02 -->
+                <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center lg:tw-mt-[-40px]">
+                    <div class="tw-flex-1 lg:tw-pr-24 tw-hidden lg:tw-block"></div>
+                    <div class="tw-z-10 tw-mb-8 lg:tw-mb-0">
+                        <div
+                            class="tw-w-20 tw-h-20 tw-bg-blue-600 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-shadow-2xl tw-border-8 tw-border-white">
+                            <i class="bi bi-thermometer-half tw-text-3xl tw-text-white"></i>
+                        </div>
+                    </div>
+                    <div class="tw-flex-1 lg:tw-pl-24">
+                        <div
+                            class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100 fade-in-up">
+                            <span
+                                class="tw-text-blue-600 tw-font-black tw-text-sm tw-uppercase tw-tracking-widest tw-mb-4 tw-inline-block">Step
+                                02</span>
+                            <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Screening</h3>
+                            <p class="tw-text-gray-600 tw-text-lg tw-leading-relaxed">
+                                Expert nursing staff performs diagnostic screening—including BP, HR, and SpO2—for
+                                baseline metrics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 03 -->
+                <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center lg:tw-mt-[-40px]">
+                    <div class="tw-flex-1 lg:tw-pr-24 lg:tw-text-right tw-order-2 lg:tw-order-1">
+                        <div
+                            class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100 fade-in-up">
+                            <span
+                                class="tw-text-blue-600 tw-font-black tw-text-sm tw-uppercase tw-tracking-widest tw-mb-4 tw-inline-block">Step
+                                03</span>
+                            <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Lead Consultation</h3>
+                            <p class="tw-text-gray-600 tw-text-lg tw-leading-relaxed">
+                                Personalized consultation where Dr. Sri Ramulu K reviews screenings and formulates your
+                                care strategy.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tw-z-10 tw-order-1 lg:tw-order-2 tw-mb-8 lg:tw-mb-0">
+                        <div
+                            class="tw-w-20 tw-h-20 tw-bg-[#1e3a5f] tw-rounded-full tw-flex tw-items-center tw-justify-center tw-shadow-2xl tw-border-8 tw-border-white">
+                            <i class="bi bi-chat-heart tw-text-3xl tw-text-white"></i>
+                        </div>
+                    </div>
+                    <div class="tw-flex-1 lg:tw-pl-24 tw-hidden lg:tw-block tw-order-3"></div>
+                </div>
+
+                <!-- Step 04 -->
+                <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center lg:tw-mt-[-40px]">
+                    <div class="tw-flex-1 lg:tw-pr-24 tw-hidden lg:tw-block"></div>
+                    <div class="tw-z-10 tw-mb-8 lg:tw-mb-0">
+                        <div
+                            class="tw-w-20 tw-h-20 tw-bg-blue-600 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-shadow-2xl tw-border-8 tw-border-white">
+                            <i class="bi bi-clipboard2-pulse tw-text-3xl tw-text-white"></i>
+                        </div>
+                    </div>
+                    <div class="tw-flex-1 lg:tw-pl-24">
+                        <div
+                            class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100 fade-in-up">
+                            <span
+                                class="tw-text-blue-600 tw-font-black tw-text-sm tw-uppercase tw-tracking-widest tw-mb-4 tw-inline-block">Step
+                                04</span>
+                            <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Path to Recovery</h3>
+                            <p class="tw-text-gray-600 tw-text-lg tw-leading-relaxed">
+                                Clear, comprehensive guidance on medication, lifestyle, or advanced interventional
+                                procedures.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- faq -->
+<section class="tw-w-full tw-pt-32 tw-pb-16 tw-bg-white">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-text-center tw-mb-20">
+            <h1 class="tw-text-6xl max-md:tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6 fade-in-up">Frequently Asked Question</h1>
+            <div class="tw-w-32 tw-h-1.5 tw-bg-[#1e3a5f] tw-mx-auto tw-rounded-full fade-in-up delay-100"></div>
+        </div>
+
+        <!-- <div class="tw-space-y-4 tw-text-center tw-mb-20">
+            {% for faq in faqs %}
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>{{ faq.question }}</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="faq-answer tw-text-left tw-leading-relaxed">
+                    <p>{{ faq.answer }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div> -->
+        <div class="faq-item">
+                <button class="faq-question">  
+                     <span>Why choose Lux Hospitals?</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="faq-answer tw-text-left tw-leading-relaxed">
+                     <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                </div>
+        </div>
+         <div class="faq-item">
+                <button class="faq-question">  
+                     <span>What services does Lux Hospitals Hyderabad provide?</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="faq-answer tw-text-left tw-leading-relaxed">
+                     <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                </div>
+        </div> 
+        <div class="faq-item">
+                <button class="faq-question">  
+                     <span>Which hospitals offer personalized and luxurious treatments?</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="faq-answer tw-text-left tw-leading-relaxed">
+                     <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+</script>
+<script>
+document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+        const item = button.parentElement;
+
+        // Close others (optional)
+        document.querySelectorAll(".faq-item").forEach(i => {
+            if (i !== item) i.classList.remove("active");
+        });
+
+        // Toggle current
+        item.classList.toggle("active");
+    });
+});
+</script>
+
+<style>
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .delay-100 {
+        transition-delay: 0.1s;
+    }
+
+    .delay-200 {
+        transition-delay: 0.2s;
+    }
+
+    .delay-300 {
+        transition-delay: 0.3s;
+    }
+    
+</style>
+{% endblock scripts %}

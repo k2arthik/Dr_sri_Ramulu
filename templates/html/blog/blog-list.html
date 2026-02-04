@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% load tz %}
+{% load static %}
+
+{% load custom_tags %}
+
+
+{% block title %}Blogs - {% endblock title %}
+{% block description %}Contains list of all the published blogs{% endblock description %}
+
+{% block socialTitle %}Blogs from {% endblock socialTitle %}
+{% block socialDescription %}Contains list of all the published blogs{% endblock socialDescription %}
+{% block pageType %}article{% endblock pageType %}
+{% comment %} {% block pageLink %}{% endblock pageLink %} {% endcomment %}
+{% block pageImage %}{% endblock pageImage %}
+
+
+{% block content %}
+<section
+    class="tw-w-full tw-min-h-[40vh] tw-flex tw-flex-col tw-place-items-center tw-justify-center tw-relative tw-overflow-hidden tw-bg-[#1e3a5f]">
+    <div class="tw-absolute tw-inset-0 tw-opacity-20">
+        <div
+            class="tw-absolute tw-top-[-10%] tw-right-[-10%] tw-w-[500px] tw-h-[500px] tw-bg-blue-400 tw-rounded-full tw-blur-[120px]">
+        </div>
+        <div
+            class="tw-absolute tw-bottom-[-10%] tw-left-[-10%] tw-w-[500px] tw-h-[500px] tw-bg-blue-600 tw-rounded-full tw-blur-[120px]">
+        </div>
+    </div>
+
+    <div class="tw-relative tw-z-10 tw-text-center tw-px-4">
+        <span
+            class="tw-inline-block tw-px-6 tw-py-2 tw-bg-blue-500/20 tw-backdrop-blur-md tw-text-blue-300 tw-rounded-full tw-text-sm tw-font-bold tw-uppercase tw-tracking-[0.2em] tw-mb-6 tw-border tw-border-blue-400/30">
+            Insights & Wellness
+        </span>
+        <h1 class="tw-text-6xl max-md:tw-text-4xl tw-font-bold tw-text-white tw-mb-6">
+            Our Health Blog
+        </h1>
+        <p class="tw-text-blue-100 tw-text-xl tw-max-w-2xl tw-mx-auto tw-leading-relaxed">
+            Latest updates, health tips, and expert perspectives on cardiovascular wellness and modern cardiac care.
+        </p>
+    </div>
+</section>
+
+<div class="tw-w-full tw-py-24 tw-bg-gray-50">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+
+        {% if blogs|length == 0 %}
+        <div
+            class="tw-w-full tw-py-32 tw-text-center tw-bg-white tw-rounded-[3rem] tw-shadow-sm tw-border tw-border-gray-100">
+            <div
+                class="tw-w-24 tw-h-24 tw-bg-blue-50 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-8">
+                <i class="bi bi-journal-x tw-text-4xl tw-text-blue-200"></i>
+            </div>
+            <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-2">No Articles Yet</h3>
+            <p class="tw-text-gray-500">We're currently preparing some insightful health tips for you. Check back soon!
+            </p>
+        </div>
+        {% else %}
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-10">
+            {% for blog in blogs %}
+            <div
+                class="tw-group tw-bg-white tw-rounded-xl tw-overflow-hidden tw-shadow-sm hover:tw-shadow-2xl tw-transition-all tw-duration-500 hover:-tw-translate-y-4 tw-flex tw-flex-col tw-border tw-border-gray-100">
+                <div class="tw-relative tw-h-64 tw-overflow-hidden">
+                    <!-- {% if blog.thumbnail %}
+                    <img src="{% static './assets/images/home/dashboard.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% else %}
+                    <div class="tw-w-full tw-h-full tw-bg-blue-50 tw-flex tw-items-center tw-justify-center">
+                        <i class="bi bi-journal-text tw-text-5xl tw-text-blue-200"></i>
+                    </div>
+                    {% endif %} -->
+
+                    <!-- static blogs images -->
+                    {% if blog.title == 'Healthy Diet for a Stronger Heart' %}
+                    <img src="{% static './assets/images/home/blogimg1.avif' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'Modern Advancements in Interventional Cardiology' %}
+                    <img src="{% static './assets/images/home/blogimg2.avif' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'The Importance of Regular Cardiac Checkups' %}
+                    <img src="{% static './assets/images/home/blogimg3.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == '10 Tips for a Heart-Healthy Lifestyle' %}
+                    <img src="{% static './assets/images/home/blogimg4.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'The Future of Cardiovascular Medicine' %}
+                    <img src="{% static './assets/images/home/blogimg1.avif' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'The Future of Cardiac Imaging' %}
+                    <img src="{% static './assets/images/home/blogimg5.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'Tips for a Heart-Healthy Lifestyle' %}
+                    <img src="{% static './assets/images/home/blogimg6.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'Understanding Coronary Interventions' %}
+                    <img src="{% static './assets/images/home/blogimg7.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% endif %}
+                    <!-- upto here static blog img ends -->
+
+                    <div
+                        class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-[#1e3a5f]/80 tw-to-transparent tw-opacity-0 group-hover:tw-opacity-100 tw-transition-opacity tw-duration-500 tw-flex tw-items-end tw-p-8">
+                        <span class="tw-text-white tw-font-bold tw-flex tw-items-center tw-gap-2">
+                            Read Full Insight <i class="bi bi-arrow-right"></i>
+                        </span>
+                    </div>
+                    <div class="tw-absolute tw-top-6 tw-left-6">
+                        <span
+                            class="tw-px-4 tw-py-2 tw-bg-white/95 tw-backdrop-blur-md tw-text-[#1e3a5f] tw-text-xs tw-font-bold tw-rounded-full tw-shadow-sm">
+                            {% utc_to_local blog.datetime request.COOKIES.user_timezone %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="tw-p-10 tw-flex-1 tw-flex tw-flex-col">
+                    <h2
+                        class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-leading-tight group-hover:tw-text-blue-600 tw-transition-colors">
+                        {{blog.title}}
+                    </h2>
+                    <div class="tw-text-gray-500 tw-leading-relaxed tw-mb-8 tw-line-clamp-3">
+                        {% if blog.meta_description %}
+                        {{blog.meta_description}}
+                        {% else %}
+                        {{blog.body|strip_html_tags|slice:":160"|safe}}
+                        {% endif %}
+                    </div>
+                    <div class="tw-mt-auto">
+                        <a href="{% url 'get-blog' slug=blog.slug %}"
+                            class="tw-inline-flex tw-items-center tw-gap-2 tw-text-[#1e3a5f] tw-font-bold hover:tw-text-blue-600 hover:tw-gap-3 tw-transition-all">
+                            Read More <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if blogs.has_previous or blogs.has_next %}
+        <div class="tw-mt-20 tw-flex tw-justify-center">
+            <nav
+                class="tw-inline-flex tw-gap-2 tw-p-2 tw-bg-white tw-rounded-2xl tw-shadow-sm tw-border tw-border-gray-100">
+                {% if blogs.has_previous %}
+                <a href="?page={{ blogs.previous_page_number }}"
+                    class="tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-bg-gray-50 tw-text-[#1e3a5f] hover:tw-bg-blue-600 hover:tw-text-white tw-transition-all">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+                {% endif %}
+
+                {% for i in page_range %}
+                {% if blogs.number == i %}
+                <span
+                    class="tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-bg-[#1e3a5f] tw-text-white tw-font-bold">
+                    {{ i }}
+                </span>
+                {% elif i == '...' %}
+                <span class="tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-gray-400">
+                    {{ i }}
+                </span>
+                {% else %}
+                <a href="?page={{ i }}"
+                    class="tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-bg-gray-50 tw-text-[#1e3a5f] hover:tw-bg-blue-600 hover:tw-text-white tw-transition-all">
+                    {{ i }}
+                </a>
+                {% endif %}
+                {% endfor %}
+
+                {% if blogs.has_next %}
+                <a href="?page={{ blogs.next_page_number }}"
+                    class="tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-bg-gray-50 tw-text-[#1e3a5f] hover:tw-bg-blue-600 hover:tw-text-white tw-transition-all">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+                {% endif %}
+            </nav>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,1056 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% load custom_tags %}
+
+{% block pageImage %}{{ request.scheme }}://{{request.get_host}}{% static 'assets/images/home/hero-heart.png' %}
+{% endblock pageImage %}
+
+{% block content %}
+
+<section class="tw-w-full tw-min-h-[100vh]  tw-max-w-[100vw]
+                        tw-flex tw-flex-col tw-overflow-hidden tw-relative
+                        tw-bg-cover tw-bg-center tw-bg-no-repeat tw-bg-fixed"
+    style="background-image: url('{% static 'assets/images/home/hero-heart.png' %}'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;"
+    id="hero-section">
+
+    <div class="tw-w-full tw-h-full tw-p-[5%]
+                        tw-place-content-center tw-min-h-[100vh]
+                        tw-justify-around tw-place-items-center
+                        tw-flex max-lg:tw-flex-col tw-bg-white/80 tw-backdrop-blur-[2px]">
+
+        <div class="tw-flex tw-flex-col tw-place-content-center tw-max-w-[650px] tw-min-w-[550px] 
+                            max-md:tw-min-w-[300px]">
+            <span class="tw-text-[#1e3a5f] tw-font-bold tw-tracking-widest tw-uppercase tw-mb-4">Consultant
+                Interventional Cardiologist</span>
+            <h1 class="tw-text-7xl tw-font-bold tw-text-[#1e3a5f] 
+                            tw-leading-tight max-md:tw-text-5xl">
+                Healing Hearts with <br>
+                <span class="tw-text-blue-600">Precision & Care</span>
+            </h1>
+            <p class="tw-mt-8 tw-text-lg tw-text-gray-700 tw-leading-relaxed">
+                Dr. Sri Ramulu K provides advanced cardiac care with a focus on patient outcomes and innovative
+                treatments. With over 15 years of excellence in cardiology.
+            </p>
+
+            <div class="tw-flex tw-gap-4 tw-mt-10">
+                <a href="{% url 'contact-us' %}"
+                    class="btn tw-px-8 tw-py-4 tw-bg-[#1e3a5f] tw-text-white tw-rounded-full hover:tw-bg-blue-900 tw-transition-all shadow-lg">
+                    Book Appointment
+                </a>
+                <a href="{% url 'services' %}"
+                    class="btn tw-px-8 tw-py-4 tw-border-2 tw-border-[#1e3a5f] tw-text-[#1e3a5f] tw-rounded-full hover:tw-bg-[#1e3a5f] hover:tw-text-white tw-transition-all">
+                    Our Services
+                </a>
+            </div>
+        </div>
+
+        <div class="tw-max-w-[500px] tw-relative">
+            <div class="tw-absolute -tw-inset-4 tw-bg-blue-200/50 tw-rounded-full tw-blur-3xl"></div>
+            <div class="tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl tw-relative tw-border-8 tw-border-white">
+                <img src="{% static './assets/images/home/dashboard.png' %}" alt="Dr. Sri Ramulu K"
+                    class="tw-w-full tw-h-auto">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Why Choose Me Section -->
+<section class="tw-w-full tw-py-24 tw-bg-blue-50">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-text-center tw-mb-16">
+            <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Why Choose Dr. Sri Ramulu K?</h2>
+            <div class="tw-w-20 tw-h-1 tw-bg-[#1e3a5f] tw-mx-auto"></div>
+        </div>
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-10">
+            <div
+                class="tw-bg-white tw-p-10 tw-rounded-3xl tw-shadow-xl hover:tw-shadow-2xl tw-transition-all hover:-tw-translate-y-2">
+                <div
+                    class="tw-w-16 tw-h-16 tw-bg-blue-100 tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-mb-6">
+                    <i class="bi bi-award tw-text-3xl tw-text-[#1e3a5f]"></i>
+                </div>
+                <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">15+ Years Expertise</h3>
+                <p class="tw-text-gray-600 tw-leading-relaxed">Decades of experience in complex coronary interventions
+                    and life-saving cardiac procedures.</p>
+            </div>
+            <div
+                class="tw-bg-white tw-p-10 tw-rounded-3xl tw-shadow-xl hover:tw-shadow-2xl tw-transition-all hover:-tw-translate-y-2">
+                <div
+                    class="tw-w-16 tw-h-16 tw-bg-blue-100 tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-mb-6">
+                    <i class="bi bi-heart-pulse tw-text-3xl tw-text-[#1e3a5f]"></i>
+                </div>
+                <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Patient-Centric Care</h3>
+                <p class="tw-text-gray-600 tw-leading-relaxed">Tailored treatment plans focused on your unique needs and
+                    long-term heart health.</p>
+            </div>
+            <div
+                class="tw-bg-white tw-p-10 tw-rounded-3xl tw-shadow-xl hover:tw-shadow-2xl tw-transition-all hover:-tw-translate-y-2">
+                <div
+                    class="tw-w-16 tw-h-16 tw-bg-blue-100 tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-mb-6">
+                    <i class="bi bi-shield-check tw-text-3xl tw-text-[#1e3a5f]"></i>
+                </div>
+                <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Advanced Technology</h3>
+                <p class="tw-text-gray-600 tw-leading-relaxed">Utilizing the latest interventional techniques and
+                    diagnostic tools at KIMS Hospital.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="tw-w-full tw-py-24 tw-bg-white" id="services-section">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-flex tw-justify-between tw-items-end tw-mb-16">
+            <div>
+                <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Specialized Heart Care</h2>
+                <div class="tw-w-20 tw-h-1 tw-bg-blue-600"></div>
+            </div>
+            <a href="{% url 'services' %}"
+                class="tw-text-[#1e3a5f] tw-font-bold hover:tw-underline tw-flex tw-items-center tw-gap-2">
+                View All Services <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-8">
+            <!-- Service Card 1 -->
+            <div
+                class="service-card tw-flex tw-flex-col tw-shadow-xl tw-rounded-2xl tw-bg-white tw-p-8 tw-transition-all tw-duration-500 tw-ease-out hover:tw-shadow-2xl hover:-tw-translate-y-4 tw-border tw-border-transparent hover:tw-border-blue-100 tw-group">
+                <i
+                    class="bi bi-heart-fill tw-text-[#1e3a5f] tw-text-5xl tw-mb-6 tw-transition-transform tw-duration-500 group-hover:tw-scale-110 group-hover:tw-text-blue-600"></i>
+                <h3
+                    class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-transition-colors group-hover:tw-text-blue-700">
+                    Cardiac Imaging</h3>
+                <p class="tw-text-gray-600 tw-mb-6">Advanced cardiac imaging services using state-of-the-art technology
+                    for accurate diagnosis.</p>
+                <a href="{% url 'service-detail' 'cardiac-imaging' %}"
+                    class="tw-mt-auto tw-text-[#1e3a5f] tw-font-bold tw-flex tw-items-center tw-gap-2 hover:tw-gap-3 tw-transition-all group-hover:tw-text-blue-600">
+                    Learn More <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+            <!-- Service Card 2 -->
+            <div
+                class="service-card tw-flex tw-flex-col tw-shadow-xl tw-rounded-2xl tw-bg-white tw-p-8 tw-transition-all tw-duration-500 tw-ease-out hover:tw-shadow-2xl hover:-tw-translate-y-4 tw-border tw-border-transparent hover:tw-border-blue-100 tw-group">
+                <i
+                    class="bi bi-heart-pulse tw-text-[#1e3a5f] tw-text-5xl tw-mb-6 tw-transition-transform tw-duration-500 group-hover:tw-scale-110 group-hover:tw-text-blue-600"></i>
+                <h3
+                    class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-transition-colors group-hover:tw-text-blue-700">
+                    CTO Interventions</h3>
+                <p class="tw-text-gray-600 tw-mb-6">Specialized treatment for chronic total occlusions with cutting-edge
+                    techniques.</p>
+                <a href="{% url 'service-detail' 'chronic-total-occlusions' %}"
+                    class="tw-mt-auto tw-text-[#1e3a5f] tw-font-bold tw-flex tw-items-center tw-gap-2 hover:tw-gap-3 tw-transition-all group-hover:tw-text-blue-600">
+                    Learn More <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+            <!-- Service Card 3 -->
+            <div
+                class="service-card tw-flex tw-flex-col tw-shadow-xl tw-rounded-2xl tw-bg-white tw-p-8 tw-transition-all tw-duration-500 tw-ease-out hover:tw-shadow-2xl hover:-tw-translate-y-4 tw-border tw-border-transparent hover:tw-border-blue-100 tw-group">
+                <i
+                    class="bi bi-heart-half tw-text-[#1e3a5f] tw-text-5xl tw-mb-6 tw-transition-transform tw-duration-500 group-hover:tw-scale-110 group-hover:tw-text-blue-600"></i>
+                <h3
+                    class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-transition-colors group-hover:tw-text-blue-700">
+                    TAVR/LAA Closure</h3>
+                <p class="tw-text-gray-600 tw-mb-6">Transcatheter Aortic Valve Replacement and structural heart
+                    procedures.</p>
+                <a href="{% url 'service-detail' 'tavr-laa-closure' %}"
+                    class="tw-mt-auto tw-text-[#1e3a5f] tw-font-bold tw-flex tw-items-center tw-gap-2 hover:tw-gap-3 tw-transition-all group-hover:tw-text-blue-600">
+                    Learn More <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+            <!-- Service Card 4 -->
+            <div
+                class="service-card tw-flex tw-flex-col tw-shadow-xl tw-rounded-2xl tw-bg-white tw-p-8 tw-transition-all tw-duration-500 tw-ease-out hover:tw-shadow-2xl hover:-tw-translate-y-4 tw-border tw-border-transparent hover:tw-border-blue-100 tw-group">
+                <i
+                    class="bi bi-heart tw-text-[#1e3a5f] tw-text-5xl tw-mb-6 tw-transition-transform tw-duration-500 group-hover:tw-scale-110 group-hover:tw-text-blue-600"></i>
+                <h3
+                    class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-transition-colors group-hover:tw-text-blue-700">
+                    CHD Interventions</h3>
+                <p class="tw-text-gray-600 tw-mb-6">Comprehensive interventions for Congenital Heart Disease in children
+                    and adults.</p>
+                <a href="{% url 'service-detail' 'interventions-chd' %}"
+                    class="tw-mt-auto tw-text-[#1e3a5f] tw-font-bold tw-flex tw-items-center tw-gap-2 hover:tw-gap-3 tw-transition-all group-hover:tw-text-blue-600">
+                    Learn More <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+            <!-- Service Card 5 -->
+            <div
+                class="service-card tw-flex tw-flex-col tw-shadow-xl tw-rounded-2xl tw-bg-white tw-p-8 tw-transition-all tw-duration-500 tw-ease-out hover:tw-shadow-2xl hover:-tw-translate-y-4 tw-border tw-border-transparent hover:tw-border-blue-100 tw-group">
+                <i
+                    class="bi bi-hospital tw-text-[#1e3a5f] tw-text-5xl tw-mb-6 tw-transition-transform tw-duration-500 group-hover:tw-scale-110 group-hover:tw-text-blue-600"></i>
+                <h3
+                    class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-transition-colors group-hover:tw-text-blue-700">
+                    Coronary Interventions</h3>
+                <p class="tw-text-gray-600 tw-mb-6">Advanced coronary intervention procedures for complex cardiovascular
+                    conditions.</p>
+                <a href="{% url 'service-detail' 'coronary-interventions' %}"
+                    class="tw-mt-auto tw-text-[#1e3a5f] tw-font-bold tw-flex tw-items-center tw-gap-2 hover:tw-gap-3 tw-transition-all group-hover:tw-text-blue-600">
+                    Learn More <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+            <!-- Service Card 6 -->
+            <div
+                class="service-card tw-flex tw-flex-col tw-shadow-xl tw-rounded-2xl tw-bg-white tw-p-8 tw-transition-all tw-duration-500 tw-ease-out hover:tw-shadow-2xl hover:-tw-translate-y-4 tw-border tw-border-transparent hover:tw-border-blue-100 tw-group">
+                <i
+                    class="bi bi-heart-pulse-fill tw-text-[#1e3a5f] tw-text-5xl tw-mb-6 tw-transition-transform tw-duration-500 group-hover:tw-scale-110 group-hover:tw-text-blue-600"></i>
+                <h3
+                    class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-transition-colors group-hover:tw-text-blue-700">
+                    Peripheral Interventions</h3>
+                <p class="tw-text-gray-600 tw-mb-6">Minimally invasive procedures to treat blood vessel problems outside
+                    the heart.</p>
+                <a href="{% url 'service-detail' 'peripheral-vascular-interventions' %}"
+                    class="tw-mt-auto tw-text-[#1e3a5f] tw-font-bold tw-flex tw-items-center tw-gap-2 hover:tw-gap-3 tw-transition-all group-hover:tw-text-blue-600">
+                    Learn More <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Professional Excellence & Counters Section -->
+<section class="tw-w-full tw-py-32 tw-bg-gray-50" id="about-section">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-flex max-lg:tw-flex-col tw-gap-20 tw-items-center">
+            <div class="tw-flex-1">
+                <span
+                    class="tw-inline-block tw-px-4 tw-py-2 tw-bg-blue-100 tw-text-blue-700 tw-rounded-xl tw-text-sm tw-font-bold tw-uppercase tw-tracking-widest tw-mb-6">Our
+                    Commitment</span>
+                <h2 class="tw-text-5xl tw-font-bold tw-text-[#1e3a5f] tw-mb-8 tw-leading-tight">Clinical Precision &
+                    <br>Patient Compassion
+                </h2>
+                <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-12">
+                    Dr. Sri Ramulu K has established a legacy of excellence in interventional cardiology. At KIMS
+                    Hospital, we combine advanced medical technology with a deeply human approach to heart health.
+                </p>
+                <div class="tw-grid tw-grid-cols-2 tw-gap-8">
+                    <div class="tw-p-8 tw-bg-white tw-rounded-3xl tw-shadow-xl tw-border tw-border-gray-100">
+                        <div class="tw-text-5xl tw-font-black tw-text-blue-600 tw-mb-2 counter" data-target="950">0
+                        </div>
+                        <div class="tw-text-gray-500 tw-font-semibold tw-uppercase tw-tracking-wider tw-text-xs">
+                            Successful Procedures</div>
+                    </div>
+                    <div class="tw-p-8 tw-bg-white tw-rounded-3xl tw-shadow-xl tw-border tw-border-gray-100">
+                        <div class="tw-text-5xl tw-font-black tw-text-[#1e3a5f] tw-mb-2 counter" data-target="15">0
+                        </div>
+                        <div class="tw-text-gray-500 tw-font-semibold tw-uppercase tw-tracking-wider tw-text-xs">Years
+                            of Excellence</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tw-flex-1 tw-w-full">
+                <div class="tw-grid tw-grid-cols-1 tw-gap-8">
+                    <div
+                        class="tw-flex tw-items-center tw-gap-8 tw-p-8 tw-bg-white tw-rounded-[2.5rem] tw-shadow-2xl tw-border-l-[12px] tw-border-blue-600">
+                        <div
+                            class="tw-w-16 tw-h-16 tw-bg-blue-50 tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+                            <i class="bi bi-clock-history tw-text-3xl tw-text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-1">Timely Diagnostics</h4>
+                            <p class="tw-text-gray-500 tw-text-lg">Rapid access to life-critical screenings.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="tw-flex tw-items-center tw-gap-8 tw-p-8 tw-bg-white tw-rounded-[2.5rem] tw-shadow-2xl tw-border-l-[12px] tw-border-[#1e3a5f]">
+                        <div
+                            class="tw-w-16 tw-h-16 tw-bg-blue-50 tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+                            <i class="bi bi-heart-pulse tw-text-3xl tw-text-[#1e3a5f]"></i>
+                        </div>
+                        <div>
+                            <h4 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-1">Post-Op Support</h4>
+                            <p class="tw-text-gray-600 tw-text-lg">Comprehensive recovery and follow-up plans.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Testimonials Section -->
+<section class="tw-w-full tw-py-32 tw-bg-[#1e3a5f] tw-overflow-hidden">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-text-center tw-mb-20">
+            <h2 class="tw-text-5xl tw-font-bold tw-text-white tw-mb-6">Patient Success Stories</h2>
+            <div class="tw-w-24 tw-h-1.5 tw-bg-blue-400 tw-mx-auto tw-rounded-full"></div>
+            <p class="tw-mt-8 tw-text-blue-100 tw-text-xl tw-max-w-2xl tw-mx-auto">Real results and life-changing
+                experiences from those who trusted Dr. Sri Ramulu K with their heart health.</p>
+        </div>
+
+        <div class="swiper successStoriesSwiper tw-w-full tw-max-w-6xl">
+            <div class="swiper-wrapper">
+                <!-- Story 1 -->
+                <div class="swiper-slide tw-px-8 tw-py-12">
+                    <div
+                        class="tw-bg-white/10 tw-backdrop-blur-lg tw-p-10 tw-rounded-[3rem] tw-border tw-border-white/10 tw-text-center tw-relative">
+                        <i
+                            class="bi bi-quote tw-text-7xl tw-text-blue-400/20 tw-absolute tw-top-4 tw-left-1/2 -tw-translate-x-1/2"></i>
+                        <q class="tw-text-xl tw-italic tw-text-white tw-leading-relaxed tw-block tw-mt-8">
+                            "Dr. Sri Ramulu's expertise in complex interventional cardiology is truly life-saving. After
+                            being told my case was high-risk, his precision and the care at KIMS gave me a second
+                            chance. I am now back to my active life, feeling better than ever."
+                        </q>
+                        <div class="tw-mt-8">
+                            <div class="tw-text-yellow-400 tw-text-lg tw-mb-2">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="tw-text-blue-200 tw-text-lg tw-font-bold">Mr. Rajesh Goud</p>
+                            <p class="tw-text-blue-300/80 tw-text-xs tw-uppercase tw-tracking-widest">Post-Angioplasty
+                                Recovery</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Story 2 -->
+                <div class="swiper-slide tw-px-8 tw-py-12">
+                    <div
+                        class="tw-bg-white/10 tw-backdrop-blur-lg tw-p-10 tw-rounded-[3rem] tw-border tw-border-white/10 tw-text-center tw-relative">
+                        <i
+                            class="bi bi-quote tw-text-7xl tw-text-blue-400/20 tw-absolute tw-top-4 tw-left-1/2 -tw-translate-x-1/2"></i>
+                        <q class="tw-text-xl tw-italic tw-text-white tw-leading-relaxed tw-block tw-mt-8">
+                            "The TAVR procedure performed by Dr. Ramulu was seamless. His ability to explain complex
+                            procedures simply put our family at ease. The post-operative care and follow-up have been
+                            exceptional. Highly recommend for any heart-related concerns."
+                        </q>
+                        <div class="tw-mt-8">
+                            <div class="tw-text-yellow-400 tw-text-lg tw-mb-2">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="tw-text-blue-200 tw-text-lg tw-font-bold">Mrs. Sunitha Rao</p>
+                            <p class="tw-text-blue-300/80 tw-text-xs tw-uppercase tw-tracking-widest">Valve Replacement
+                                Patient</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Story 3 -->
+                <div class="swiper-slide tw-px-8 tw-py-12">
+                    <div
+                        class="tw-bg-white/10 tw-backdrop-blur-lg tw-p-10 tw-rounded-[3rem] tw-border tw-border-white/10 tw-text-center tw-relative">
+                        <i
+                            class="bi bi-quote tw-text-7xl tw-text-blue-400/20 tw-absolute tw-top-4 tw-left-1/2 -tw-translate-x-1/2"></i>
+                        <q class="tw-text-xl tw-italic tw-text-white tw-leading-relaxed tw-block tw-mt-8">
+                            "Emergency cardiac care is where Dr. Sri Ramulu truly shines. His quick decision-making and
+                            expertise saved my life during a critical event. The support staff and the hygiene levels at
+                            the hospital are world-class."
+                        </q>
+                        <div class="tw-mt-8">
+                            <div class="tw-text-yellow-400 tw-text-lg tw-mb-2">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="tw-text-blue-200 tw-text-lg tw-font-bold">Mr. Venkat Reddy</p>
+                            <p class="tw-text-blue-300/80 tw-text-xs tw-uppercase tw-tracking-widest">Emergency Cardiac
+                                Care</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Story 4 -->
+                <div class="swiper-slide tw-px-8 tw-py-12">
+                    <div
+                        class="tw-bg-white/10 tw-backdrop-blur-lg tw-p-10 tw-rounded-[3rem] tw-border tw-border-white/10 tw-text-center tw-relative">
+                        <i
+                            class="bi bi-quote tw-text-7xl tw-text-blue-400/20 tw-absolute tw-top-4 tw-left-1/2 -tw-translate-x-1/2"></i>
+                        <q class="tw-text-xl tw-italic tw-text-white tw-leading-relaxed tw-block tw-mt-8">
+                            "Professionalism mixed with deep empathy. Dr. Ramulu doesn't just treat the heart; he treats
+                            the patient. His lifestyle guidance post-surgery has helped me maintain a healthy heart for
+                            the last 5 years."
+                        </q>
+                        <div class="tw-mt-8">
+                            <div class="tw-text-yellow-400 tw-text-lg tw-mb-2">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="tw-text-blue-200 tw-text-lg tw-font-bold">Mr. Ahmed Khan</p>
+                            <p class="tw-text-blue-300/80 tw-text-xs tw-uppercase tw-tracking-widest">Chronic Heart
+                                Management</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Story 5 -->
+                <div class="swiper-slide tw-px-8 tw-py-12">
+                    <div
+                        class="tw-bg-white/10 tw-backdrop-blur-lg tw-p-10 tw-rounded-[3rem] tw-border tw-border-white/10 tw-text-center tw-relative">
+                        <i
+                            class="bi bi-quote tw-text-7xl tw-text-blue-400/20 tw-absolute tw-top-4 tw-left-1/2 -tw-translate-x-1/2"></i>
+                        <q class="tw-text-xl tw-italic tw-text-white tw-leading-relaxed tw-block tw-mt-8">
+                            "A brilliant cardiologist and an even better human being. The way he handles geriatric
+                            patients with patience and care is remarkable. My father’s recovery from a complex pacemaker
+                            integration was surprisingly fast."
+                        </q>
+                        <div class="tw-mt-8">
+                            <div class="tw-text-yellow-400 tw-text-lg tw-mb-2">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="tw-text-blue-200 tw-text-lg tw-font-bold">Ms. Kavitha Reddy</p>
+                            <p class="tw-text-blue-300/80 tw-text-xs tw-uppercase tw-tracking-widest">Family Testimonial
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination !tw-bottom-0"></div>
+        </div>
+    </div>
+</section>
+
+<div class="tw-fixed
+                tw-top-[50%] tw-translate-y-[-50%]
+                tw-left-[50%] tw-translate-x-[-50%]
+                tw-w-[450px] tw-max-h-[450px] 
+                max-md:tw-w-[350px]
+                tw-z-40
+                tw-p-3
+                tw-hidden
+                tw-flex 
+                tw-flex-col
+                tw-rounded-md
+                tw-shadow-2xl
+                tw-bg-white" id="modal">
+    {% comment %} feedback modal {% endcomment %}
+    <div class="tw-w-full tw-relative tw-h-[40px]">
+        <button class="tw-text-4xl 
+                            bi bi-x
+                            tw-absolute
+                            tw-right-2
+                            " id="modal-close">
+    </div>
+    </button>
+    <h2 class="tw-text-2xl tw-text-center tw-mt-[5%]" id="modal-title"></h2>
+
+    <div class="tw-text-base tw-font-normal tw-mt-2" id="modal-description">
+    </div>
+
+    <textarea id="modal-input" placeholder="write..." maxlength="2000" class="input tw-w-full 
+                        tw-hidden
+                        tw-mt-2
+                        tw-resize-y 
+                        tw-text-base
+                        tw-font-normal
+                        tw-min-h-[50px]
+                        tw-max-h-[150px]"></textarea>
+
+    <div class="tw-w-full tw-flex tw-place-content-center tw-mt-3">
+        <a href="#" class="btn tw-text-sm tw-cursor-pointer" id="modal-action-btn">
+            Open
+        </a>
+    </div>
+
+</div>
+
+
+<!-- Awards & Achievements Section -->
+<section class="tw-w-full tw-py-24 tw-bg-white" id="awards-summary-section">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-flex tw-justify-between tw-items-end tw-mb-16">
+            <div>
+                <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Awards & Recognition</h2>
+                <div class="tw-w-20 tw-h-1 tw-bg-blue-600"></div>
+            </div>
+            <a href="{% url 'awards' %}"
+                class="tw-text-[#1e3a5f] tw-font-bold hover:tw-underline tw-flex tw-items-center tw-gap-2">
+                View All Awards <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
+            <!-- Award Card 1 -->
+            <div
+                class="tw-group tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-lg hover:tw-shadow-2xl tw-transition-all tw-duration-300 tw-border tw-border-gray-100 tw-relative tw-overflow-hidden hover:tw--translate-y-2">
+                <div
+                    class="tw-absolute tw-top-0 tw-right-0 tw-w-32 tw-h-32 tw-bg-blue-50 tw-rounded-bl-full tw-transition-colors group-hover:tw-bg-blue-100/50">
+                </div>
+                <div class="tw-relative">
+                    <div class="tw-mb-6">
+                        <span
+                            class="tw-inline-block tw-py-1.5 tw-px-4 tw-bg-blue-50 tw-text-blue-700 tw-rounded-lg tw-text-sm tw-font-bold">Aug
+                            2023</span>
+                    </div>
+                    <h3
+                        class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 group-hover:tw-text-blue-600 tw-transition-colors">
+                        Best Cardiologist For Medical Excellence</h3>
+                    <p class="tw-text-gray-600 tw-leading-relaxed tw-mb-6">Recognized as "The Best Cardiologist For
+                        Medical Excellence In Interventional Cardiology" by Business Mint, acknowledging outstanding
+                        patient outcomes.</p>
+                    <div
+                        class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-400 tw-font-semibold tw-uppercase tw-tracking-wide">
+                        <i class="bi bi-award"></i> Business Mint
+                    </div>
+                </div>
+            </div>
+
+            <!-- Award Card 2 -->
+            <div
+                class="tw-group tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-lg hover:tw-shadow-2xl tw-transition-all tw-duration-300 tw-border tw-border-gray-100 tw-relative tw-overflow-hidden hover:tw--translate-y-2">
+                <div
+                    class="tw-absolute tw-top-0 tw-right-0 tw-w-32 tw-h-32 tw-bg-amber-50 tw-rounded-bl-full tw-transition-colors group-hover:tw-bg-amber-100/50">
+                </div>
+                <div class="tw-relative">
+                    <div class="tw-mb-6">
+                        <span
+                            class="tw-inline-block tw-py-1.5 tw-px-4 tw-bg-amber-50 tw-text-amber-700 tw-rounded-lg tw-text-sm tw-font-bold">Dec
+                            2023</span>
+                    </div>
+                    <h3
+                        class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 group-hover:tw-text-blue-600 tw-transition-colors">
+                        Dr. A.P.J. Abdul Kalam Excellence Award</h3>
+                    <p class="tw-text-gray-600 tw-leading-relaxed tw-mb-6">Awarded for exemplary services rendered
+                        in the field of Cardiology, honoring a commitment to medical science and community health.
+                    </p>
+                    <div
+                        class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-400 tw-font-semibold tw-uppercase tw-tracking-wide">
+                        <i class="bi bi-star-fill"></i> Excellence Award
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blogs Section -->
+<section class="tw-w-full tw-py-32 tw-bg-gray-50 tw-relative tw-overflow-hidden" id="blogs-section">
+    <div
+        class="tw-absolute tw-top-0 tw-right-0 tw-w-96 tw-h-96 tw-bg-blue-100/50 tw-rounded-full tw-blur-3xl -tw-translate-y-1/2 tw-translate-x-1/2">
+    </div>
+    <div
+        class="tw-absolute tw-bottom-0 tw-left-0 tw-w-96 tw-h-96 tw-bg-blue-50/50 tw-rounded-full tw-blur-3xl tw-translate-y-1/2 -tw-translate-x-1/2">
+    </div>
+
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4 tw-relative tw-z-10">
+        <div class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-items-center md:tw-items-end tw-mb-20">
+            <div class="tw-text-center md:tw-text-left tw-mb-8 md:tw-mb-0">
+                <span
+                    class="tw-inline-block tw-px-4 tw-py-2 tw-bg-blue-100 tw-text-blue-700 tw-rounded-xl tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">Health
+                    & Wellness</span>
+                <h2 class="tw-text-5xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Latest Health Insights</h2>
+                <div class="tw-w-24 tw-h-1.5 tw-bg-blue-600 tw-rounded-full max-md:tw-mx-auto"></div>
+            </div>
+            <a href="{% url 'list-blogs' %}"
+                class="tw-group tw-flex tw-items-center tw-gap-3 tw-px-8 tw-py-4 tw-bg-white tw-text-[#1e3a5f] tw-font-bold tw-rounded-2xl tw-shadow-lg hover:tw-bg-[#1e3a5f] hover:tw-text-white tw-transition-all tw-duration-300">
+                Visit Full Blog
+                <i class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-2"></i>
+            </a>
+        </div>
+
+        <div class="swiper insightsSwiper tw-w-full">
+            <div class="swiper-wrapper">
+                {% for blog in recent_blogs %}
+                <div class="swiper-slide tw-p-2">
+                    <div
+                        class="tw-group tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-md hover:tw-shadow-lg tw-transition-all tw-duration-500 hover:-tw-translate-y-2 tw-flex tw-flex-col tw-h-[420px]">
+                        <div class="tw-relative tw-h-48 tw-overflow-hidden">
+                            <!-- {% if blog.thumbnail %}
+                            <img src="{% static './assets/images/home/dashboard.png' %}" alt="{{ blog.title }}"
+                                class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                            {% else %}
+                            <div class="tw-w-full tw-h-full tw-bg-blue-50 tw-flex tw-items-center tw-justify-center">
+                                <i class="bi bi-journal-text tw-text-4xl tw-text-blue-200"></i>
+                            </div>
+                            {% endif %} -->
+
+                     <!-- static blogs images -->
+                    {% if blog.title == 'Healthy Diet for a Stronger Heart' %}
+                    <img src="{% static './assets/images/home/blogimg1.avif' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'Modern Advancements in Interventional Cardiology' %}
+                    <img src="{% static './assets/images/home/blogimg2.avif' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'The Importance of Regular Cardiac Checkups' %}
+                    <img src="{% static './assets/images/home/blogimg3.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == '10 Tips for a Heart-Healthy Lifestyle' %}
+                    <img src="{% static './assets/images/home/blogimg4.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'The Future of Cardiovascular Medicine' %}
+                    <img src="{% static './assets/images/home/blogimg1.avif' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'The Future of Cardiac Imaging' %}
+                    <img src="{% static './assets/images/home/blogimg5.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'Tips for a Heart-Healthy Lifestyle' %}
+                    <img src="{% static './assets/images/home/blogimg6.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% elif blog.title == 'Understanding Coronary Interventions' %}
+                    <img src="{% static './assets/images/home/blogimg7.png' %}" alt="{{blog.title}}"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    {% endif %}
+                    <!-- upto here static blog img ends -->
+                        </div>
+
+                        <div class="tw-p-6 tw-flex-1 tw-flex tw-flex-col">
+                            <h3
+                                class="tw-text-lg tw-font-bold tw-text-[#1e3a5f] tw-mb-3 tw-leading-tight group-hover:tw-text-blue-600 tw-transition-colors tw-line-clamp-2">
+                                {{ blog.title }}
+                            </h3>
+                            <p class="tw-text-gray-500 tw-text-sm tw-leading-relaxed tw-mb-4 tw-line-clamp-3">
+                                {{ blog.meta_description|default:blog.body|striptags|truncatechars:100 }}
+                            </p>
+                            <div class="tw-mt-auto">
+                                <a href="{% url 'get-blog' blog.slug %}"
+                                    class="tw-text-blue-600 tw-text-sm tw-font-bold hover:tw-underline tw-flex tw-items-center tw-gap-1">
+                                    Read More <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="swiper-slide">
+                    <div class="tw-bg-white tw-rounded-[2.5rem] tw-p-16 tw-text-center tw-shadow-lg">
+                        <i class="bi bi-journals tw-text-6xl tw-text-blue-100 tw-mb-6 tw-block"></i>
+                        <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-2">No Insights Yet</h3>
+                        <p class="tw-text-gray-500">Subscribe to our newsletter to be notified when we publish new
+                            health tips.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination !tw-mt-8"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="tw-w-full tw-py-24 tw-bg-white" id="gallery-home-section">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <!-- Photo Gallery Spotlight -->
+        <div class="tw-mb-24">
+            <div class="tw-flex tw-justify-between tw-items-end tw-mb-12">
+                <div>
+                    <span
+                        class="tw-inline-block tw-px-4 tw-py-2 tw-bg-blue-100 tw-text-blue-700 tw-rounded-xl tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">Visual
+                        Excellence</span>
+                    <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Photo Gallery Spotlight</h2>
+                    <div class="tw-w-20 tw-h-1 tw-bg-blue-600"></div>
+                </div>
+                <a href="{% url 'gallery-photos' %}"
+                    class="tw-group tw-flex tw-items-center tw-gap-2 tw-text-[#1e3a5f] tw-font-bold hover:tw-text-blue-600 tw-transition-colors">
+                    View All Photos <i
+                        class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+
+            <div class="tw-grid tw-grid-cols-2 md:tw-grid-cols-3  tw-gap-6">
+                {% for photo in photos %}
+                <div
+                    class="tw-group tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow-md tw-aspect-square tw-bg-gray-100">
+                    <img src="{{ photo.image_url }}" alt="Gallery Photo"
+                        class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    <div
+                        class="tw-absolute tw-inset-0 tw-bg-black/20 tw-opacity-0 group-hover:tw-opacity-100 tw-transition-opacity tw-duration-500 tw-flex tw-items-center tw-justify-center">
+                        <i class="bi bi-zoom-in tw-text-white tw-text-3xl"></i>
+                    </div>
+                </div>
+                {% empty %}
+                <!-- Placeholder for Photos if none available -->
+                {% for i in "123456" %}
+                <div class="tw-rounded-3xl tw-overflow-hidden tw-shadow-lg tw-h-80 tw-bg-gray-100 tw-animate-pulse">
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Video Gallery Spotlight -->
+        <div>
+            <div class="tw-flex tw-justify-between tw-items-end tw-mb-12">
+                <div>
+                    <span
+                        class="tw-inline-block tw-px-4 tw-py-2 tw-bg-blue-100 tw-text-blue-700 tw-rounded-xl tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">Education
+                        in Motion</span>
+                    <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Video Gallery Spotlight</h2>
+                    <div class="tw-w-20 tw-h-1 tw-bg-red-600"></div>
+                </div>
+                <a href="{% url 'gallery-videos' %}"
+                    class="tw-group tw-flex tw-items-center tw-gap-2 tw-text-[#1e3a5f] tw-font-bold hover:tw-text-red-600 tw-transition-colors">
+                    View All Videos <i
+                        class="bi bi-arrow-right tw-transition-transform group-hover:tw-translate-x-1"></i>
+                </a>
+            </div>
+
+            <div class="tw-grid tw-grid-cols-1 tw-max-w-5xl tw-mx-auto md:tw-grid-cols-2 tw-gap-16">
+                
+                <!-- <div id="youtube_card"
+                    class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                    <iframe
+                        src="https://www.youtube.com/embed/CY8Bc8m4YeY?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+                 -->
+
+                 <!-- here only first 4 youtube videos wil be displayed in home page -->
+                <!-- video1 -->
+            <div id="video-container"
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div  class=" video-card tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/wdNRgtvNcYg?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- video2 -->
+            <div id="video-container"
+                class="  tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class=" video-card tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/m0CaJ7RgYYc?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- video3 -->
+            <div id="video-container"
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div  class=" video-card tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/Kv2GKS1NuDI?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- video4 -->
+            <div id="video-container"
+                class=" tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class="video-card tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/_fZYUtRgYRQ?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+             <!-- video5 -->
+            <div id="video-container"
+                class=" tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class="video-card tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/_fZYUtRgYRQ?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+             <!-- video6 -->
+            <div id="video-container"
+                class=" tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class="video-card tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/_fZYUtRgYRQ?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+                <!-- Placeholder for Videos if none available
+                {% for i in "1234" %}
+                <div id="youtube_card"
+                    class="tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-gray-200 tw-animate-pulse tw-border-4 tw-border-white">
+                </div>
+                {% endfor %} -->
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- fAQ -->
+<section class="tw-w-full tw-py-12 tw-bg-white" id="awards-summary-section">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-flex tw-justify-between tw-items-end tw-mb-16">
+            <div>
+                <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Frequently Asked Question</h2>
+                <div class="tw-w-20 tw-h-1 tw-bg-blue-600"></div>
+            </div>
+        </div>
+         <div class="tw-space-y-4 tw-text-center tw-mb-20">
+            <!-- {% for faq in faqs %}
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>{{ faq.question }}</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="faq-answer tw-text-left tw-leading-relaxed">
+                    <p>{{ faq.answer }}</p>
+                </div>
+            </div>
+            {% endfor %} -->
+
+            <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</section>
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"
+    integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+    integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const MAX_VIDEOS = 4;
+    const cards = document.querySelectorAll("#video-container .video-card");
+
+    cards.forEach((card, index) => {
+        if (index >= MAX_VIDEOS) {
+            card.remove();   // or: card.style.display = "none";
+        }
+    });
+});
+</script>
+
+
+<script>
+    document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+        const item = button.parentElement;
+
+        // Close others (optional)
+        document.querySelectorAll(".faq-item").forEach(i => {
+            if (i !== item) i.classList.remove("active");
+        });
+
+        // Toggle current
+        item.classList.toggle("active");
+    });
+});
+    // Robust Counter Logic
+    function runCounterAnimation() {
+        const counters = document.querySelectorAll('.counter');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'));
+                    let current = 0;
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function update(now) {
+                        const elapsed = now - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        current = Math.floor(progress * target);
+                        el.innerText = current + '+';
+                        if (progress < 1) {
+                            requestAnimationFrame(update);
+                        } else {
+                            el.innerText = target + '+';
+                        }
+                    }
+                    requestAnimationFrame(update);
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        counters.forEach(c => {
+            if (c.innerText === '0+') return; // Prevent double trigger
+            c.innerText = '0+';
+            observer.observe(c);
+        });
+    }
+
+    // Swiper Initialization
+    function initSwipers() {
+        // Success Stories Swiper
+        new Swiper('.successStoriesSwiper', {
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+        });
+
+        // Health Insights Swiper
+        new Swiper('.insightsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    }
+
+    // Video Modal Functions
+    function openVideoModal(videoId) {
+        const modal = document.getElementById('video-modal');
+        const container = document.getElementById('video-container');
+
+        // Extract video ID if full URL was passed
+        const id = extractYouTubeId(videoId);
+
+        if (!id) {
+            console.error('Invalid video ID:', videoId);
+            return;
+        }
+
+        // Create iframe with lazy loading
+        const origin = window.location.origin;
+        const iframe = document.createElement('iframe');
+        iframe.className = 'tw-w-full tw-h-full';
+        iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+        iframe.title = 'YouTube video player';
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+
+        container.innerHTML = '';
+        container.appendChild(iframe);
+        modal.classList.remove('tw-hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+        const modal = document.getElementById('video-modal');
+        const container = document.getElementById('video-container');
+
+        container.innerHTML = '';
+        modal.classList.add('tw-hidden');
+        document.body.style.overflow = '';
+    }
+
+    function extractYouTubeId(url) {
+        if (!url) return null;
+
+        // If it's already an 11-character ID
+        if (/^[a-zA-Z0-9_-]{11}$/.test(url.trim())) {
+            return url.trim();
+        }
+
+        // Extract from various YouTube URL formats
+        const patterns = [
+            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/v\/|youtube\.com\/\?v=)([a-zA-Z0-9_-]{11})/,
+            /youtube\.com\/.*[?&]v=([a-zA-Z0-9_-]{11})/
+        ];
+
+        for (const pattern of patterns) {
+            const match = url.match(pattern);
+            if (match) return match[1];
+        }
+
+        return null;
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeVideoModal();
+        }
+    });
+
+    // Initialization
+    function init() {
+        runCounterAnimation ? runCounterAnimation() : null;
+        initSwipers ? initSwipers() : null;
+    }
+
+    if (document.readyState === 'complete') {
+        init();
+    } else {
+        window.addEventListener('load', init);
+    }
+</script>
+
+<script src="{% static 'js/home.js' %}"></script>
+
+<style>
+    .dot.active {
+        background-color: white !important;
+        width: 2rem !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #1e3a5f !important;
+    }
+
+    .successStoriesSwiper .swiper-pagination-bullet {
+        background: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    .successStoriesSwiper .swiper-pagination-bullet-active {
+        background: white !important;
+        width: 1.5rem !important;
+        border-radius: 4px !important;
+    }
+
+    
+</style>
+
+
+
+{% endblock scripts %}

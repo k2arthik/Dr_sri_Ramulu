@@ -1,0 +1,199 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block navbar %}
+<nav
+    class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-50 tw-bg-white/90 tw-backdrop-blur-xl tw-border-b tw-border-slate-100">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-6 tw-h-20 tw-flex tw-items-center tw-justify-between">
+        <a href="{% url 'admin_dashboard' %}" class="tw-text-2xl tw-font-black tw-text-slate-900">HealthGate <span
+                class="tw-text-blue-600">Admin</span></a>
+        <div class="tw-flex tw-gap-8 tw-items-center tw-text-sm tw-font-bold tw-text-slate-600">
+            <a href="{% url 'admin_dashboard' %}" class="hover:tw-text-blue-600">Dashboard</a>
+            <a href="{% url 'admin_enquiries' %}" class="hover:tw-text-blue-600">Enquiries</a>
+            <a href="{% url 'admin_appointments' %}" class="hover:tw-text-blue-600">Appointments</a>
+
+            <div class="tw-relative tw-group">
+                <button class="hover:tw-text-blue-600 tw-flex tw-items-center tw-gap-1.5 tw-transition-colors">
+                    Gallery <i
+                        class="bi bi-chevron-down tw-text-[10px] tw-transition-transform group-hover:tw-rotate-180"></i>
+                </button>
+                <div
+                    class="tw-absolute tw-top-[calc(100%+0.5rem)] tw-left-0 tw-w-48 tw-bg-white tw-border tw-border-slate-100 tw-rounded-2xl tw-shadow-2xl tw-opacity-0 tw-invisible group-hover:tw-opacity-100 group-hover:tw-visible tw-transition-all tw-duration-300 tw-translate-y-2 group-hover:tw-translate-y-0 tw-z-50 tw-overflow-hidden">
+                    <div class="tw-py-2">
+                        <a href="{% url 'admin_gallery_photos' %}"
+                            class="tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-3 hover:tw-bg-slate-50 tw-text-slate-600 hover:tw-text-blue-600">
+                            <i class="bi bi-images"></i> Photos
+                        </a>
+                        <a href="{% url 'admin_gallery_videos' %}"
+                            class="tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-3 hover:tw-bg-slate-50 tw-text-slate-600 hover:tw-text-blue-600">
+                            <i class="bi bi-play-circle-fill"></i> Videos
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'admin_blogs' %}" class="tw-text-blue-600">Blogs</a>
+            <a href="{% url 'home' %}"
+                class="tw-bg-slate-100 tw-px-4 tw-py-2 tw-rounded-xl hover:tw-bg-slate-200 tw-transition-all">View
+                Site</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="tw-min-h-screen tw-bg-slate-50 tw-pt-32 tw-pb-20">
+    <div class="tw-max-w-5xl tw-mx-auto tw-px-6">
+        <div class="tw-mb-10 tw-flex tw-items-center tw-gap-4">
+            <a href="{% url 'admin_blogs' %}"
+                class="tw-w-10 tw-h-10 tw-flex tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-shadow-sm tw-border tw-border-slate-100 tw-text-slate-400 hover:tw-text-blue-600 tw-transition-all">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <div>
+                <h1 class="tw-text-3xl tw-font-black tw-text-slate-900">{% if blog %}Edit{% else %}New{% endif %} <span
+                        class="tw-text-blue-600">Article</span></h1>
+            </div>
+        </div>
+
+        <form method="POST" class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-10">
+            {% csrf_token %}
+            <div class="md:tw-col-span-2 tw-space-y-8">
+                <!-- Main Content Card -->
+                <div class="tw-bg-white tw-p-8 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-slate-100">
+                    <div class="tw-space-y-6">
+                        <div>
+                            <label
+                                class="tw-block tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-mb-2">Article
+                                Title</label>
+                            <input type="text" name="title" value="{{ blog.title|default:'' }}" required
+                                onkeyup="updateSlug(this.value)"
+                                class="tw-w-full tw-bg-slate-50 tw-border tw-border-slate-100 tw-rounded-2xl tw-px-6 tw-py-4 tw-text-lg tw-font-bold tw-text-slate-900 focus:tw-bg-white tw-outline-none tw-transition-all focus:tw-ring-4 tw-ring-blue-50">
+                        </div>
+                        <div>
+                            <label
+                                class="tw-block tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-mb-2">Slug
+                                (URL Mapping)</label>
+                            <input type="text" name="slug" id="slug-input" value="{{ blog.slug|default:'' }}" required
+                                class="tw-w-full tw-bg-slate-50 tw-border tw-border-slate-100 tw-rounded-2xl tw-px-6 tw-py-3 tw-text-sm tw-text-slate-500 focus:tw-bg-white tw-outline-none tw-transition-all">
+                        </div>
+                        <div>
+                            <label
+                                class="tw-block tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-mb-2">Article
+                                Body (Markdown/HTML Support)</label>
+                            <textarea name="body" rows="20" required
+                                class="tw-w-full tw-bg-slate-50 tw-border tw-border-slate-100 tw-rounded-2xl tw-px-6 tw-py-6 tw-text-slate-700 tw-font-medium tw-leading-relaxed focus:tw-bg-white tw-outline-none tw-transition-all focus:tw-ring-4 tw-ring-blue-50">{{ blog.body|default:'' }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tw-space-y-8">
+                <!-- Visibility Card -->
+                <div class="tw-bg-white tw-p-8 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-slate-100">
+                    <h2 class="tw-text-xl tw-font-black tw-text-slate-900 tw-mb-6">Publishing</h2>
+                    <div class="tw-flex tw-items-center tw-justify-between tw-mb-8">
+                        <span class="tw-text-sm tw-font-bold tw-text-slate-600">Draft Mode</span>
+                        <label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+                            <input type="checkbox" name="draft" class="tw-sr-only tw-peer" {% if not blog or blog.draft
+                                %}checked{% endif %}>
+                            <div
+                                class="tw-w-11 tw-h-6 tw-bg-slate-200 tw-peer-focus:tw-outline-none tw-rounded-full tw-peer tw-peer-checked:after:tw-translate-x-full tw-peer-checked:after:tw-border-white after:tw-content-[''] after:tw-absolute after:tw-top-[2px] after:tw-left-[2px] after:tw-bg-white after:tw-border-gray-300 after:tw-border after:tw-rounded-full after:tw-h-5 after:tw-w-5 after:tw-transition-all tw-peer-checked:tw-bg-amber-500">
+                            </div>
+                        </label>
+                    </div>
+                    <button type="submit"
+                        class="tw-w-full tw-bg-blue-600 tw-text-white tw-py-4 tw-rounded-2xl tw-font-bold hover:tw-bg-blue-700 tw-transition-all tw-shadow-lg tw-shadow-blue-600/20">
+                        Save Article
+                    </button>
+                </div>
+
+                <!-- Media Card -->
+                <div class="tw-bg-white tw-p-8 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-slate-100">
+                    <h2 class="tw-text-xl tw-font-black tw-text-slate-900 tw-mb-6">Featured Image</h2>
+                    <div class="tw-space-y-4">
+                        <div
+                            class="tw-aspect-video tw-bg-slate-50 tw-rounded-2xl tw-border tw-border-dashed tw-border-slate-200 tw-flex tw-items-center tw-justify-center tw-overflow-hidden">
+                            <img id="thumbnail-preview" src="{{ blog.thumbnail|default:'' }}"
+                                class="tw-w-full tw-h-full tw-object-cover {% if not blog or not blog.thumbnail %}tw-hidden{% endif %}">
+                            <div id="no-thumbnail"
+                                class="tw-text-center {% if blog and blog.thumbnail %}tw-hidden{% endif %}">
+                                <i class="bi bi-image tw-text-4xl tw-text-slate-200"></i>
+                                <p class="tw-text-[10px] tw-font-bold tw-text-slate-400 tw-mt-2">PREVIEW</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="tw-block tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-mb-2">Image
+                                URL</label>
+                            <input type="text" name="thumbnail" value="{{ blog.thumbnail|default:'' }}"
+                                onkeyup="updatePreview(this.value)"
+                                class="tw-w-full tw-bg-slate-50 tw-border tw-border-slate-100 tw-rounded-xl tw-px-4 tw-py-3 tw-text-xs tw-text-slate-600 focus:tw-bg-white tw-outline-none tw-transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Card -->
+                <div class="tw-bg-white tw-p-8 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-slate-100">
+                    <h2 class="tw-text-xl tw-font-black tw-text-slate-900 tw-mb-6">Metadata (SEO)</h2>
+                    <div class="tw-space-y-4">
+                        <div>
+                            <label
+                                class="tw-block tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-mb-2">Category</label>
+                            <select name="category"
+                                class="tw-w-full tw-bg-slate-50 tw-border tw-border-slate-100 tw-rounded-xl tw-px-4 tw-py-3 tw-text-xs tw-text-slate-600 focus:tw-bg-white tw-outline-none">
+                                <option value="Cardiology" {% if blog and blog.category=='Cardiology' %}selected{% endif
+                                    %}>Cardiology</option>
+                                <option value="Lifestyle" {% if blog and blog.category=='Lifestyle' %}selected{% endif
+                                    %}>Lifestyle</option>
+                                <option value="Technology" {% if blog and blog.category=='Technology' %}selected{% endif
+                                    %}>Technology</option>
+                                <option value="General" {% if not blog or blog.category=='General' %}selected{% endif
+                                    %}>General</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label
+                                class="tw-block tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-mb-2">Small
+                                Description</label>
+                            <textarea name="meta_description" rows="2" maxlength="160"
+                                class="tw-w-full tw-bg-slate-50 tw-border tw-border-slate-100 tw-rounded-xl tw-px-4 tw-py-3 tw-text-xs tw-text-slate-600 focus:tw-bg-white tw-outline-none tw-transition-all">{{ blog.meta_description|default:'' }}</textarea>
+                            <p class="tw-text-[10px] tw-text-slate-400 tw-mt-1">Limit: 160 characters for SEO
+                                optimizing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function updateSlug(title) {
+        if (!document.getElementById('slug-input').dataset.manual) {
+            const slug = title.toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/[\s_-]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+            document.getElementById('slug-input').value = slug;
+        }
+    }
+
+    document.getElementById('slug-input').oninput = function () {
+        this.dataset.manual = "true";
+    };
+
+    function updatePreview(url) {
+        const preview = document.getElementById('thumbnail-preview');
+        const empty = document.getElementById('no-thumbnail');
+        if (url) {
+            preview.src = url;
+            preview.classList.remove('tw-hidden');
+            empty.classList.add('tw-hidden');
+        } else {
+            preview.classList.add('tw-hidden');
+            empty.classList.remove('tw-hidden');
+        }
+    }
+</script>
+{% endblock %}

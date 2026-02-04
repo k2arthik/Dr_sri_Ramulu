@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Dr. Sri Ramulu K - {% endblock title %}
+
+{% block content %}
+
+<section 
+    class="tw-relative tw-w-full tw-py-24 tw-px-[5%] tw-bg-gradient-to-br tw-from-[#1e3a5f] tw-to-[#2d5a8e] tw-overflow-hidden">
+    <!-- Decorative background elements -->
+    <div
+        class="tw-absolute tw-top-0 tw-right-0 tw-w-96 tw-h-96 tw-bg-white/5 tw-rounded-full tw-blur-3xl tw-translate-x-1/2 tw--translate-y-1/2">
+    </div>
+    <div
+        class="tw-absolute tw-bottom-0 tw-left-0 tw-w-64 tw-h-64 tw-bg-blue-400/10 tw-rounded-full tw-blur-2xl tw--translate-x-1/3 tw-translate-y-1/3">
+    </div>
+
+    <div class="tw-relative tw-max-w-7xl tw-mx-auto">
+        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-16 tw-items-center">
+            <div class="tw-w-full lg:tw-w-5/12">
+                <div class="tw-relative tw-group tw-flex tw-flex-col tw-items-center">
+                    <div
+                        class="tw-absolute -tw-inset-4 tw-bg-blue-400/20 tw-rounded-[2.5rem] tw-blur-2xl tw-opacity-0 group-hover:tw-opacity-100 tw-transition-opacity">
+                    </div>
+                    <div
+                        class="tw-relative tw-rounded-[3rem] tw-overflow-hidden tw-shadow-3xl tw-border-8 tw-border-white/10 tw-aspect-square tw-w-full">
+                        <img src="{% static './assets/images/home/dashboard.png' %}" alt="Dr. Sri Ramulu K"
+                            class="tw-w-full tw-h-full tw-object-cover tw-transition-transform tw-duration-700 group-hover:tw-scale-110">
+                    </div>
+                    <!-- Experience badge ADJUSTED: Excellent/Premium Design -->
+                    <div class="tw-mt-10 tw-relative">
+                        <div
+                            class="tw-absolute -tw-inset-1 tw-bg-gradient-to-r tw-from-blue-600 tw-to-blue-400 tw-rounded-2xl tw-blur tw-opacity-25">
+                        </div>
+                        <div
+                            class="tw-relative tw-bg-white tw-py-5 tw-px-12 tw-rounded-2xl tw-shadow-2xl tw-text-center tw-border-t-2 tw-border-blue-50">
+                            <div class="tw-flex tw-items-center tw-justify-center tw-gap-3 tw-mb-1">
+                                <i class="bi bi-star-fill tw-text-amber-500"></i>
+                                <div class="tw-text-4xl tw-font-black tw-text-[#1e3a5f]">15+ YOE</div>
+                                <i class="bi bi-star-fill tw-text-amber-500"></i>
+                            </div>
+                            <div class="tw-text-xs tw-font-bold tw-text-blue-600 tw-uppercase tw-tracking-[0.2em]">
+                                Global Medical Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tw-w-full lg:tw-w-7/12 tw-text-white">
+                <span
+                    class="tw-inline-block tw-py-1 tw-px-4 tw-rounded-full tw-bg-blue-500/20 tw-text-blue-100 tw-text-sm tw-font-bold tw-mb-6 tw-uppercase tw-tracking-wider">Leading
+                    Interventional Cardiologist</span>
+                <h1 class="tw-text-5xl md:tw-text-6xl tw-font-extrabold tw-mb-6 tw-leading-tight">
+                    Dr. Sri Ramulu K
+                </h1>
+                <h2 class="tw-text-2xl tw-font-medium tw-text-blue-200 tw-mb-8">Consultant at KIMS Hospital, Hyderabad
+                </h2>
+                <div class="tw-space-y-6 tw-text-lg tw-text-blue-50/90 tw-leading-relaxed">
+                    <p>
+                        Dr. Sri Ramulu K is a distinguished Interventional Cardiologist renowned for his clinical
+                        precision and compassionate approach to heart health. With a specialization in complex coronary
+                        interventions, he has spent over a decade advancing cardiac care in India.
+                    </p>
+                    <p>
+                        His philosophy centers on the integration of state-of-the-art medical technology with
+                        personalized patient management, ensuring the highest standards of safety and efficacy in every
+                        procedure.
+                    </p>
+                </div>
+
+                <div class="tw-mt-10 tw-flex tw-flex-wrap tw-gap-8">
+                    <div class="tw-flex tw-items-center tw-gap-3">
+                        <div
+                            class="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-white/10 tw-flex tw-items-center tw-justify-center tw-text-2xl">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <div>
+                            <div class="tw-text-2xl tw-font-bold">7,500+</div>
+                            <div class="tw-text-xs tw-text-blue-200 tw-uppercase tw-font-bold">Angiograms</div>
+                        </div>
+                    </div>
+                    <div class="tw-flex tw-items-center tw-gap-3">
+                        <div
+                            class="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-white/10 tw-flex tw-items-center tw-justify-center tw-text-2xl">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <div class="tw-text-2xl tw-font-bold">1,500+</div>
+                            <div class="tw-text-xs tw-text-blue-200 tw-uppercase tw-font-bold">Coronary PCIs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tw-w-full tw-py-24 tw-px-[5%] tw-bg-gray-50">
+    <div class="tw-max-w-7xl tw-mx-auto">
+
+        <!-- PHILOSOPHY SECTION -->
+        <div class="tw-max-w-4xl tw-mx-auto tw-mb-24">
+            <div
+                class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-2xl tw-relative tw-overflow-hidden tw-text-center">
+                <div class="tw-absolute tw-top-0 tw-right-0 tw-w-32 tw-h-32 tw-bg-blue-600/5 tw-rounded-bl-full"></div>
+                <div class="tw-mb-8 tw-text-[#1e3a5f] tw-text-5xl">
+                    <i class="bi bi-quote"></i>
+                </div>
+                <h3 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6 tw-relative italic">Philosophy of Care
+                </h3>
+                <p class="tw-text-gray-600 tw-leading-relaxed tw-mb-10 tw-text-xl">
+                    "Every patient's heart is unique. My approach is to combine the most advanced clinical data with a
+                    deep understanding of the individual's lifestyle and concerns, creating a path to recovery that is
+                    both technically flawless and humanly supportive."
+                </p>
+                <div class="tw-w-24 tw-h-1 tw-bg-blue-600 tw-mx-auto tw-mb-4"></div>
+                <div class="tw-font-bold tw-text-xl tw-text-[#1e3a5f]">Dr. Sri Ramulu K</div>
+                <div class="tw-text-gray-500 uppercase tw-tracking-widest tw-text-xs tw-mt-1">Award Winning
+                    Interventional Cardiologist</div>
+            </div>
+        </div>
+
+        <!-- NEW VISUALLY STUNNING TIMELINE -->
+        <div class="tw-mb-32">
+            <div class="tw-text-center tw-mb-20">
+                <h2 class="tw-text-5xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Professional Milestone</h2>
+                <div class="tw-w-24 tw-h-1.5 tw-bg-blue-600 tw-mx-auto tw-rounded-full"></div>
+            </div>
+
+            <div class="tw-relative">
+                <!-- Vertical spine (Desktop) -->
+                <div
+                    class="tw-hidden lg:tw-block tw-absolute tw-left-1/2 tw-top-0 tw-bottom-0 tw-w-1 tw-bg-gradient-to-b tw-from-blue-600 tw-via-blue-400 tw-to-blue-200 -tw-translate-x-1/2 tw-rounded-full">
+                </div>
+
+                <div class="tw-space-y-20 lg:tw-space-y-0">
+
+                    <!-- Milestone 1 -->
+                    <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center">
+                        <div class="tw-flex-1 lg:tw-pr-20 lg:tw-text-right tw-order-2 lg:tw-order-1">
+                            <div
+                                class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-xl hover:tw-shadow-2xl tw-transition-all tw-border tw-border-blue-50 group hover:-tw-translate-y-2">
+                                <span
+                                    class="tw-text-blue-600 tw-font-black tw-text-xs tw-uppercase tw-tracking-widest tw-mb-2 tw-inline-block">2021
+                                    - Present</span>
+                                <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-3">Consultant Cardiologist
+                                </h3>
+                                <p class="tw-text-gray-600 tw-font-medium">KIMS Hospital, Gachibowli, Hyderabad</p>
+                                <p class="tw-text-gray-500 tw-text-sm tw-mt-3 leading-relaxed">Leading complex coronary
+                                    interventions and managing the hospital's interventional cardiac wing at
+                                    Gachibowli.</p>
+                            </div>
+                        </div>
+                        <div class="tw-z-10 tw-order-1 lg:tw-order-2 tw-mb-6 lg:tw-mb-0">
+                            <div
+                                class="tw-w-16 tw-h-16 tw-bg-[#1e3a5f] tw-rounded-full tw-flex tw-items-center tw-justify-center tw-ring-8 tw-ring-blue-50 tw-shadow-xl">
+                                <i class="bi bi-hospital tw-text-2xl tw-text-white"></i>
+                            </div>
+                        </div>
+                        <div class="tw-flex-1 lg:tw-pl-20 tw-hidden lg:tw-block tw-order-3"></div>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center lg:tw-mt-[-20px]">
+                        <div class="tw-flex-1 lg:tw-pr-20 tw-hidden lg:tw-block"></div>
+                        <div class="tw-z-10 tw-mb-6 lg:tw-mb-0">
+                            <div
+                                class="tw-w-16 tw-h-16 tw-bg-blue-600 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-ring-8 tw-ring-blue-50 tw-shadow-xl">
+                                <i class="bi bi-building tw-text-2xl tw-text-white"></i>
+                            </div>
+                        </div>
+                        <div class="tw-flex-1 lg:tw-pl-20">
+                            <div
+                                class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-xl hover:tw-shadow-2xl tw-transition-all tw-border tw-border-blue-50 group hover:-tw-translate-y-2">
+                                <span
+                                    class="tw-text-blue-600 tw-font-black tw-text-xs tw-uppercase tw-tracking-widest tw-mb-2 tw-inline-block">2019
+                                    - 2021</span>
+                                <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-3">Consultant Cardiologist
+                                </h3>
+                                <p class="tw-text-gray-600 tw-font-medium">Sunshine Hospitals, Gachibowli, Hyderabad
+                                </p>
+                                <p class="tw-text-gray-500 tw-text-sm tw-mt-3 leading-relaxed">Contributed
+                                    significantly to cardiac department expansion and performed high-volume
+                                    interventional procedures.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center lg:tw-mt-[-20px]">
+                        <div class="tw-flex-1 lg:tw-pr-20 lg:tw-text-right tw-order-2 lg:tw-order-1">
+                            <div
+                                class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-xl hover:tw-shadow-2xl tw-transition-all tw-border tw-border-blue-50 group hover:-tw-translate-y-2">
+                                <span
+                                    class="tw-text-blue-600 tw-font-black tw-text-xs tw-uppercase tw-tracking-widest tw-mb-2 tw-inline-block">2016
+                                    - 2019</span>
+                                <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-3">Senior Resident (DM)
+                                </h3>
+                                <p class="tw-text-gray-600 tw-font-medium">Kasturba Medical College, Manipal</p>
+                                <p class="tw-text-gray-500 tw-text-sm tw-mt-3 leading-relaxed">Advanced specialization
+                                    in Cardiology, focusing on clinical and interventional techniques at one of India's
+                                    premier institutes.</p>
+                            </div>
+                        </div>
+                        <div class="tw-z-10 tw-order-1 lg:tw-order-2 tw-mb-6 lg:tw-mb-0">
+                            <div
+                                class="tw-w-16 tw-h-16 tw-bg-[#1e3a5f] tw-rounded-full tw-flex tw-items-center tw-justify-center tw-ring-8 tw-ring-blue-50 tw-shadow-xl">
+                                <i class="bi bi-journals tw-text-2xl tw-text-white"></i>
+                            </div>
+                        </div>
+                        <div class="tw-flex-1 lg:tw-pl-20 tw-hidden lg:tw-block tw-order-3"></div>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div class="tw-relative tw-flex tw-flex-col lg:tw-flex-row tw-items-center lg:tw-mt-[-20px]">
+                        <div class="tw-flex-1 lg:tw-pr-20 tw-hidden lg:tw-block"></div>
+                        <div class="tw-z-10 tw-mb-6 lg:tw-mb-0">
+                            <div
+                                class="tw-w-16 tw-h-16 tw-bg-blue-600 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-ring-8 tw-ring-blue-50 tw-shadow-xl">
+                                <i class="bi bi-mortarboard tw-text-2xl tw-text-white"></i>
+                            </div>
+                        </div>
+                        <div class="tw-flex-1 lg:tw-pl-20">
+                            <div
+                                class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-xl hover:tw-shadow-2xl tw-transition-all tw-border tw-border-blue-50 group hover:-tw-translate-y-2">
+                                <span
+                                    class="tw-text-blue-600 tw-font-black tw-text-xs tw-uppercase tw-tracking-widest tw-mb-2 tw-inline-block">2012
+                                    - 2016</span>
+                                <h3 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-3">Academic Excellence
+                                </h3>
+                                <p class="tw-text-gray-600 tw-font-medium">KMC Manipal (MD & Asst. Professor)</p>
+                                <p class="tw-text-gray-500 tw-text-sm tw-mt-3 leading-relaxed">Transitioned from
+                                    internal medicine mastery to academic leadership within the clinical faculty.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div> <!-- End of Timeline -->
+
+        <!-- SPACING ADDED HERE -->
+        <div class="tw-h-32"></div>
+
+        <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-16">
+            <!-- Education Section -->
+            <section>
+                <div class="tw-flex tw-items-center tw-gap-4 tw-mb-10">
+                    <div
+                        class="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-green-100 tw-text-green-700 tw-flex tw-items-center tw-justify-center tw-text-2xl">
+                        <i class="bi bi-mortarboard-fill"></i>
+                    </div>
+                    <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f]">Academic Roots</h2>
+                </div>
+
+                <div class="tw-space-y-6">
+                    <div
+                        class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-lg tw-border-l-8 tw-border-blue-600 tw-transition-transform hover:-tw-translate-y-2">
+                        <div class="tw-flex tw-justify-between tw-items-start tw-mb-2">
+                            <h3 class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">DM (Cardiology)</h3>
+                            <span
+                                class="tw-text-sm tw-bg-blue-50 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-font-bold">2016-19</span>
+                        </div>
+                        <p class="tw-text-gray-700">Kasturba Medical College, Manipal</p>
+                    </div>
+                    <div
+                        class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-lg tw-border-l-8 tw-border-blue-400 tw-transition-transform hover:-tw-translate-y-2">
+                        <div class="tw-flex tw-justify-between tw-items-start tw-mb-2">
+                            <h3 class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">MD (Internal Medicine)</h3>
+                            <span
+                                class="tw-text-sm tw-bg-blue-50 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-font-bold">2012-15</span>
+                        </div>
+                        <p class="tw-text-gray-700">Kasturba Medical College, Manipal</p>
+                    </div>
+                    <div
+                        class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-lg tw-border-l-8 tw-border-blue-200 tw-transition-transform hover:-tw-translate-y-2">
+                        <div class="tw-flex tw-justify-between tw-items-start tw-mb-2">
+                            <h3 class="tw-text-xl tw-font-bold tw-text-[#1e3a5f]">MBBS</h3>
+                            <span
+                                class="tw-text-sm tw-bg-blue-50 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-font-bold">2004-10</span>
+                        </div>
+                        <p class="tw-text-gray-700">ASRAM (Dr. NTR University of Health Sciences)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Areas of Interest & Memberships -->
+            <div class="tw-flex tw-flex-col tw-gap-16">
+                <section>
+                    <div class="tw-flex tw-items-center tw-gap-4 tw-mb-10">
+                        <div
+                            class="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-amber-100 tw-text-amber-700 tw-flex tw-items-center tw-justify-center tw-text-2xl">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h2 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f]">Key Interests</h2>
+                    </div>
+
+                    <div class="tw-bg-white tw-p-8 tw-rounded-[2rem] tw-shadow-lg tw-border tw-border-gray-100">
+                        <ul class="tw-space-y-4">
+                            <li class="tw-flex tw-gap-4">
+                                <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-1"></i>
+                                <span class="tw-text-gray-700 tw-font-medium">Complex Coronary Interventions (CTO,
+                                    Bifurcation)</span>
+                            </li>
+                            <li class="tw-flex tw-gap-4">
+                                <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-1"></i>
+                                <span class="tw-text-gray-700 tw-font-medium">Structural Heart Disease (TAVR, LAA
+                                    Closure, ASD/VSD closures)</span>
+                            </li>
+                            <li class="tw-flex tw-gap-4">
+                                <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-1"></i>
+                                <span class="tw-text-gray-700 tw-font-medium">Pacemaker, ICD, and CRT
+                                    Implantations</span>
+                            </li>
+                            <li class="tw-flex tw-gap-4">
+                                <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-1"></i>
+                                <span class="tw-text-gray-700 tw-font-medium">Peripheral Vascular Interventions</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="tw-text-2xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Global Memberships</h2>
+                    <div class="tw-flex tw-flex-wrap tw-gap-4">
+                        <span
+                            class="tw-px-6 tw-py-3 tw-bg-[#1e3a5f] tw-text-white tw-rounded-2xl tw-font-bold tw-shadow-lg hover:tw-shadow-xl tw-transition-all hover:-tw-translate-y-1">CSI</span>
+                        <span
+                            class="tw-px-6 tw-py-3 tw-bg-[#1e3a5f] tw-text-white tw-rounded-2xl tw-font-bold tw-shadow-lg hover:tw-shadow-xl tw-transition-all hover:-tw-translate-y-1">IAE</span>
+                        <span
+                            class="tw-px-6 tw-py-3 tw-bg-[#1e3a5f] tw-text-white tw-rounded-2xl tw-font-bold tw-shadow-lg hover:tw-shadow-xl tw-transition-all hover:-tw-translate-y-1">SCAl</span>
+                        <!-- Fixed last membership tag - now consistent blue -->
+                        <span
+                            class="tw-px-6 tw-py-3 tw-bg-[#1e3a5f] tw-text-white tw-rounded-2xl tw-font-bold tw-shadow-lg hover:tw-shadow-xl tw-transition-all hover:-tw-translate-y-1">ACC</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

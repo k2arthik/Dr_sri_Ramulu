@@ -1,0 +1,169 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block navbar %}
+<nav
+    class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-50 tw-bg-white/90 tw-backdrop-blur-xl tw-border-b tw-border-slate-100">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-6 tw-h-20 tw-flex tw-items-center tw-justify-between">
+        <a href="{% url 'admin_dashboard' %}" class="tw-text-2xl tw-font-black tw-text-slate-900">HealthGate <span
+                class="tw-text-blue-600">Admin</span></a>
+        <div class="tw-flex tw-gap-8 tw-items-center tw-text-sm tw-font-bold tw-text-slate-600">
+            <a href="{% url 'admin_dashboard' %}" class="hover:tw-text-blue-600">Dashboard</a>
+            <a href="{% url 'admin_enquiries' %}" class="tw-text-blue-600">Enquiries</a>
+            <a href="{% url 'admin_appointments' %}" class="hover:tw-text-blue-600">Appointments</a>
+
+            <!-- Gallery Dropdown -->
+            <div class="tw-relative tw-group">
+                <button class="hover:tw-text-blue-600 tw-flex tw-items-center tw-gap-1.5 tw-transition-colors">
+                    Gallery <i
+                        class="bi bi-chevron-down tw-text-[10px] tw-transition-transform group-hover:tw-rotate-180"></i>
+                </button>
+                <div
+                    class="tw-absolute tw-top-[calc(100%+0.5rem)] tw-left-0 tw-w-48 tw-bg-white tw-border tw-border-slate-100 tw-rounded-2xl tw-shadow-2xl tw-opacity-0 tw-invisible group-hover:tw-opacity-100 group-hover:tw-visible tw-transition-all tw-duration-300 tw-translate-y-2 group-hover:tw-translate-y-0 tw-z-50 tw-overflow-hidden">
+                    <div class="tw-py-2">
+                        <a href="{% url 'admin_gallery_photos' %}"
+                            class="tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-3 hover:tw-bg-slate-50 tw-text-slate-600 hover:tw-text-blue-600 tw-transition-all">
+                            <i class="bi bi-images"></i> Photos
+                        </a>
+                        <a href="{% url 'admin_gallery_videos' %}"
+                            class="tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-3 hover:tw-bg-slate-50 tw-text-slate-600 hover:tw-text-blue-600 tw-transition-all">
+                            <i class="bi bi-play-circle-fill"></i> Videos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blogs Link -->
+            <a href="{% url 'admin_blogs' %}" class="hover:tw-text-blue-600 tw-transition-colors">Blogs</a>
+            <a href="{% url 'home' %}"
+                class="tw-bg-slate-100 tw-px-4 tw-py-2 tw-rounded-xl hover:tw-bg-slate-200 tw-transition-all">View
+                Site</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="tw-min-h-screen tw-bg-slate-50 tw-pt-32 tw-pb-20">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-6">
+        <div class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-items-center tw-mb-10 tw-gap-4">
+            <div>
+                <h1 class="tw-text-3xl tw-font-black tw-text-slate-900">Patient <span
+                        class="tw-text-blue-600">Inquiries</span></h1>
+                <nav class="tw-flex tw-gap-2 tw-text-sm tw-text-slate-400 tw-mt-2">
+                    <a href="{% url 'admin_dashboard' %}" class="hover:tw-text-blue-600">Dashboard</a>
+                    <span>/</span>
+                    <span class="tw-text-slate-600">Enquiries</span>
+                </nav>
+            </div>
+            <a href="{% url 'admin_export' 'enquiries' %}"
+                class="tw-bg-emerald-600 tw-text-white tw-px-6 tw-py-3 tw-rounded-xl tw-font-bold hover:tw-bg-emerald-700 tw-transition-all">
+                <i class="bi bi-file-earmark-excel"></i> Export Excel
+            </a>
+        </div>
+
+        <!-- Filter Bar -->
+        <div
+            class="tw-bg-white tw-p-4 tw-rounded-[1.5rem] tw-shadow-sm tw-border tw-border-slate-100 tw-mb-10 tw-flex tw-flex-wrap tw-gap-3 tw-items-center">
+            <span class="tw-text-slate-400 tw-text-xs tw-font-black tw-uppercase tw-ml-4">Filter By Status:</span>
+            <a href="?status="
+                class="tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold {% if not request.GET.status %}tw-bg-slate-900 tw-text-white{% else %}tw-bg-slate-100 tw-text-slate-600{% endif %}">All</a>
+            <a href="?status=unresolved"
+                class="tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold {% if request.GET.status == 'unresolved' %}tw-bg-amber-500 tw-text-white{% else %}tw-bg-slate-100 tw-text-slate-600{% endif %}">Pending</a>
+            <a href="?status=resolved"
+                class="tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold {% if request.GET.status == 'resolved' %}tw-bg-emerald-500 tw-text-white{% else %}tw-bg-slate-100 tw-text-slate-600{% endif %}">Resolved</a>
+        </div>
+
+        <div class="tw-bg-white tw-rounded-[2rem] tw-shadow-xl tw-border tw-border-slate-100 tw-overflow-hidden">
+            <div class="tw-overflow-x-auto">
+                <table class="tw-w-full tw-text-left tw-border-collapse">
+                    <thead class="tw-bg-slate-50/50 tw-border-b tw-border-slate-100">
+                        <tr>
+                            <th class="tw-px-8 tw-py-6"><input type="checkbox" id="select-all" class="tw-w-5 tw-h-5">
+                            </th>
+                            <th class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase">
+                                Submission Info</th>
+                            <th class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase">
+                                Patient</th>
+                            <th class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase">
+                                Content</th>
+                            <th
+                                class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-text-center">
+                                Manage Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tw-divide-y tw-divide-slate-50">
+                        {% for item in inquiries %}
+                        <tr class="hover:tw-bg-slate-50/50 tw-transition-colors">
+                            <td class="tw-px-8 tw-py-6"><input type="checkbox" class="item-checkbox tw-w-5 tw-h-5"
+                                    data-id="{{ item.id }}"></td>
+                            <td class="tw-px-8 tw-py-6">
+                                <div class="tw-font-bold tw-text-slate-900 tw-text-sm">{{ item.created_at|slice:":10" }}
+                                </div>
+                                <div class="tw-text-slate-400 tw-text-[10px]">{{ item.created_at|slice:"11:16" }}</div>
+                            </td>
+                            <td class="tw-px-8 tw-py-6">
+                                <div class="tw-font-bold tw-text-slate-900">{{ item.name }}</div>
+                                <div class="tw-text-slate-500 tw-text-xs">{{ item.phone }}</div>
+                                <div class="tw-text-blue-500 tw-text-[10px]">{{ item.email }}</div>
+                            </td>
+                            <td class="tw-px-8 tw-py-6">
+                                <div
+                                    class="tw-max-w-xs tw-text-slate-600 tw-text-[10px] tw-line-clamp-2 hover:tw-line-clamp-none tw-cursor-help">
+                                    {{ item.description }}</div>
+                            </td>
+                            <td class="tw-px-8 tw-py-6">
+                                <div class="tw-flex tw-flex-col tw-items-center tw-gap-2">
+                                    {% if item.status == 'resolved' %}
+                                    <span
+                                        class="tw-bg-emerald-100 tw-text-emerald-700 tw-px-4 tw-py-1.5 tw-rounded-full tw-text-[10px] tw-font-black tw-tracking-widest">RESOLVED</span>
+                                    {% else %}
+                                    <span
+                                        class="tw-bg-amber-100 tw-text-amber-700 tw-px-4 tw-py-1.5 tw-rounded-full tw-text-[10px] tw-font-black tw-tracking-widest">PENDING</span>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5"
+                                class="tw-px-8 tw-py-20 tw-text-center tw-text-slate-400 tw-font-bold italic">No
+                                inquiries found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tw-mt-8 tw-flex tw-gap-4">
+            <button onclick="bulkAction('resolve')"
+                class="tw-bg-emerald-600 tw-text-white tw-px-8 tw-py-4 tw-rounded-2xl tw-font-bold hover:tw-bg-emerald-700 tw-transition-all shadow-xl shadow-emerald-900/10">Mark
+                Resolved</button>
+            <button onclick="bulkAction('delete')"
+                class="tw-bg-rose-600 tw-text-white tw-px-8 tw-py-4 tw-rounded-2xl tw-font-bold hover:tw-bg-rose-700 tw-transition-all shadow-xl shadow-rose-900/10">Delete
+                Selected</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('select-all').onchange = (e) => {
+        document.querySelectorAll('.item-checkbox').forEach(c => c.checked = e.target.checked);
+    };
+
+    function bulkAction(action) {
+        const ids = Array.from(document.querySelectorAll('.item-checkbox:checked')).map(c => c.dataset.id);
+        if (!ids.length) return alert('Select items first');
+        if (action === 'delete' && !confirm('Are you sure?')) return;
+
+        fetch('', {
+            method: 'POST',
+            headers: { 'X-CSRFToken': '{{ csrf_token }}', 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ 'action': action, 'items[]': ids })
+        }).then(() => location.reload());
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% load tz %}
+{% load static %}
+
+{% load custom_tags %}
+
+{% block title %}{{blog.title}} | {% endblock title %}
+{% block description %}{{blog.meta_description}}{% endblock description %}
+
+{% block socialTitle %}{{blog.title}} | {% endblock socialTitle %}
+{% block socialDescription %}{{blog.meta_description}}{% endblock socialDescription %}
+{% block pageType %}article{% endblock pageType %}
+{% comment %} {% block pageLink %}{% endblock pageLink %} {% endcomment %}
+{% if blog.thumbnail %}
+{% block pageImage %}{{ blog.thumbnail }}{% endblock pageImage %}
+{% endif %}
+
+{% block head_tags %}
+{{ block.super }}
+<link rel="stylesheet" id="highlightjs-light"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/a11y-light.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="{% static './css/blog/blog.css' %}">
+
+<style>
+    figcaption {
+        display: none;
+    }
+</style>
+
+{% endblock head_tags %}
+
+
+{% block content %}
+<!-- Reading Progress Bar -->
+<div class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-h-1.5 tw-z-[100] tw-bg-gray-100">
+    <div id="reading-progress" class="tw-h-full tw-bg-blue-600 tw-w-0 tw-transition-all tw-duration-150"></div>
+</div>
+
+<article class="tw-w-full tw-bg-white">
+    <!-- Immersive Blog Hero -->
+    <header
+        class="tw-relative tw-w-full {% if blog.thumbnail %}tw-h-[80vh]{% else %}tw-py-40{% endif %} tw-flex tw-items-center tw-justify-center tw-overflow-hidden tw-bg-[#1e3a5f]">
+        {% if blog.thumbnail %}
+        <img src="{{ blog.thumbnail }}" alt="{{ blog.title }}"
+            class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-opacity-40 tw-scale-105"
+            id="hero-image">
+        <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-[#1e3a5f]/80 tw-via-[#1e3a5f]/40 tw-to-white">
+        </div>
+        {% endif %}
+
+        <div class="tw-relative tw-z-10 tw-max-w-5xl tw-mx-auto tw-px-6 tw-text-center">
+            <div
+                class="tw-inline-flex tw-items-center tw-gap-3 tw-px-5 tw-py-2 tw-bg-white/10 tw-backdrop-blur-xl tw-rounded-full tw-border tw-border-white/20 tw-mb-10 tw-animate-fade-in-down">
+                <span class="tw-w-2 tw-h-2 tw-bg-blue-400 tw-rounded-full tw-animate-pulse"></span>
+                <span class="tw-text-blue-100 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest">Medical
+                    Insights</span>
+            </div>
+
+            <h1
+                class="tw-text-7xl max-md:tw-text-4xl tw-font-bold tw-text-white tw-mb-10 tw-leading-[1.1] tw-tracking-tight tw-animate-fade-in-up">
+                {{blog.title}}
+            </h1>
+
+            <div
+                class="tw-flex tw-items-center tw-justify-center tw-gap-8 tw-text-blue-50/80 tw-font-semibold tw-animate-fade-in">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                    <div
+                        class="tw-w-10 tw-h-10 tw-bg-white/10 tw-backdrop-blur-md tw-rounded-full tw-flex tw-items-center tw-justify-center tw-border tw-border-white/10">
+                        <i class="bi bi-calendar3"></i>
+                    </div>
+                    <span>{% utc_to_local blog.datetime request.COOKIES.user_timezone %}</span>
+                </div>
+                <div class="tw-flex tw-items-center tw-gap-3">
+                    <div
+                        class="tw-w-10 tw-h-10 tw-bg-white/10 tw-backdrop-blur-md tw-rounded-full tw-flex tw-items-center tw-justify-center tw-border tw-border-white/10">
+                        <i class="bi bi-clock"></i>
+                    </div>
+                    <span>5 Min Read</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div
+            class="tw-absolute tw-bottom-10 tw-left-1/2 -tw-translate-x-1/2 tw-z-10 tw-animate-bounce tw-text-white/50">
+            <i class="bi bi-arrow-down-circle tw-text-3xl"></i>
+        </div>
+    </header>
+
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-6 tw-py-32 tw-relative">
+        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-20">
+
+            <!-- Floating Social & Actions (Desktop) -->
+            <aside class="tw-hidden lg:block tw-w-24">
+                <div class="tw-sticky tw-top-40 tw-flex tw-flex-col tw-items-center tw-gap-8">
+                    <div
+                        class="tw-text-[#1e3a5f]/30 tw-text-[10px] tw-font-bold tw-uppercase tw-tracking-[0.3em] [writing-mode:vertical-lr] tw-rotate-180">
+                        Share Insight</div>
+                    <div class="tw-w-px tw-h-12 tw-bg-gray-100"></div>
+                    <button id="copy-link"
+                        class="tw-group tw-w-14 tw-h-14 tw-flex tw-items-center tw-justify-center tw-rounded-2xl tw-bg-white tw-text-[#1e3a5f] hover:tw-bg-[#1e3a5f] hover:tw-text-white tw-transition-all tw-duration-500 tw-shadow-xl tw-shadow-gray-200/50 tw-border tw-border-gray-100"
+                        aria-label="Share">
+                        <i class="bi bi-share tw-text-xl group-hover:tw-scale-110 tw-transition-transform"></i>
+                    </button>
+                    <a href="{% url 'list-blogs' %}"
+                        class="tw-group tw-w-14 tw-h-14 tw-flex tw-items-center tw-justify-center tw-rounded-2xl tw-bg-gray-50 tw-text-[#1e3a5f]/50 hover:tw-bg-gray-100 hover:tw-text-[#1e3a5f] tw-transition-all tw-duration-500 tw-border tw-border-gray-100"
+                        title="Back to Blogs">
+                        <i class="bi bi-grid tw-text-xl"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Artistic Content -->
+            <div class="tw-flex-1 tw-max-w-4xl">
+                <div class="tw-prose tw-prose-2xl max-md:tw-prose-lg tw-prose-blue tw-max-w-none 
+                            tw-text-[#374151] tw-leading-[2] tw-font-normal
+                            prose-headings:tw-text-[#1e3a5f] prose-headings:tw-font-bold prose-headings:tw-tracking-tight
+                            prose-p:tw-mb-10 prose-p:tw-opacity-90
+                            prose-blockquote:tw-border-l-4 prose-blockquote:tw-border-blue-600 prose-blockquote:tw-bg-blue-50/50 prose-blockquote:tw-p-10 prose-blockquote:tw-rounded-3xl prose-blockquote:tw-italic prose-blockquote:tw-text-[#1e3a5f]
+                            prose-img:tw-rounded-[3rem] prose-img:tw-shadow-2xl prose-img:tw-my-16
+                            prose-li:tw-mb-4" id="editor">
+                    {{blog.body|safe}}
+                </div>
+
+                <!-- Engagement Section -->
+                <div
+                    class="tw-mt-32 tw-relative tw-p-1 bg-gradient-to-br tw-from-blue-500 tw-to-indigo-600 tw-rounded-[4rem] tw-shadow-2xl">
+                    <div
+                        class="tw-bg-white tw-rounded-[3.8rem] tw-p-12 md:tw-p-20 tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-gap-12 tw-overflow-hidden tw-relative">
+                        <!-- Decorative bg -->
+                        <div
+                            class="tw-absolute tw-top-0 tw-right-0 tw-w-64 tw-h-64 tw-bg-blue-50 tw-rounded-full tw-blur-3xl tw-opacity-50 -tw-translate-y-1/2 tw-translate-x-1/2">
+                        </div>
+
+                        <div
+                            class="tw-relative tw-z-10 tw-w-32 tw-h-32 tw-bg-blue-600 tw-rounded-[2.5rem] tw-flex tw-items-center tw-justify-center tw-shadow-xl tw-shadow-blue-200">
+                            <i class="bi bi-shield-check tw-text-5xl tw-text-white"></i>
+                        </div>
+
+                        <div class="tw-relative tw-z-10 tw-flex-1 tw-text-center lg:tw-text-left">
+                            <h4 class="tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4 tw-tracking-tight">Your Heart
+                                Matters Most</h4>
+                            <p class="tw-text-gray-500 tw-text-lg tw-mb-10 tw-leading-relaxed tw-max-w-xl">Take the next
+                                step in your cardiovascular health. Our world-class experts are ready to provide
+                                personalized care tailored to your needs.</p>
+                            <a href="#appointment-section"
+                                class="tw-inline-flex tw-items-center tw-gap-4 tw-px-10 tw-py-5 tw-bg-[#1e3a5f] tw-text-white tw-rounded-full tw-font-bold tw-text-lg hover:tw-bg-blue-600 hover:tw-scale-105 tw-transition-all tw-duration-500 tw-shadow-xl tw-shadow-blue-900/20">
+                                Consult with Dr. Ramulu <i class="bi bi-arrow-right-short tw-text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Actions -->
+            <div class="lg:tw-hidden tw-fixed tw-bottom-10 tw-left-10 tw-right-10 tw-z-50 tw-flex tw-gap-4">
+                <button id="copy-link-mobile"
+                    class="tw-flex-1 tw-flex tw-items-center tw-justify-center tw-gap-4 tw-px-10 tw-py-6 tw-bg-[#1e3a5f]/95 tw-backdrop-blur-xl tw-text-white tw-rounded-3xl tw-shadow-2xl tw-font-bold tw-text-lg"
+                    aria-label="Share">
+                    <i class="bi bi-share"></i> Share
+                </button>
+            </div>
+
+        </div>
+    </div>
+</article>
+{% endblock content %}
+
+{% block scripts %}
+<link rel="stylesheet" href="{% static './css/blog.css' %}">
+<script>
+    // Share Functionality
+    const copy_link = document.getElementById("copy-link")
+    const copy_link_mobile = document.getElementById("copy-link-mobile")
+
+    const handleShare = () => {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+            toastAlert(null, "Link copied to clipboard")
+        }, function (err) {
+            callback_form_toast_body.innerText = `Error copying link`
+        })
+    }
+
+    if (copy_link) copy_link.onclick = handleShare;
+    if (copy_link_mobile) copy_link_mobile.onclick = handleShare;
+
+    // Reading Progress Indicator
+    window.onscroll = function () {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        let progressElement = document.getElementById("reading-progress");
+        if (progressElement) progressElement.style.width = scrolled + "%";
+    };
+
+    // Parallax & Reveal Effects
+    window.addEventListener('scroll', function () {
+        const heroImg = document.getElementById('hero-image');
+        if (heroImg) {
+            let offset = window.pageYOffset;
+            heroImg.style.transform = "translateY(" + (offset * 0.4) + "px) scale(1.05)";
+        }
+    });
+</script>
+<script src="{% static './js/editor/blog-view.js' %}"></script>
+
+<style>
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-in-down {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .tw-animate-fade-in-up {
+        animation: fade-in-up 1s ease-out forwards;
+    }
+
+    .tw-animate-fade-in-down {
+        animation: fade-in-down 1s ease-out forwards;
+    }
+
+    .tw-animate-fade-in {
+        animation: fade-in 1.5s ease-out forwards;
+    }
+
+    /* Smooth Scroll */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Custom Prose tweaks for premium feel */
+    .prose blockquote p:before,
+    .prose blockquote p:after {
+        content: none !important;
+    }
+</style>
+{% endblock scripts %}

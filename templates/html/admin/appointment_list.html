@@ -1,0 +1,205 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block navbar %}
+<nav
+    class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-50 tw-bg-white/90 tw-backdrop-blur-xl tw-border-b tw-border-slate-100">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-6 tw-h-20 tw-flex tw-items-center tw-justify-between">
+        <a href="{% url 'admin_dashboard' %}" class="tw-text-2xl tw-font-black tw-text-slate-900">HealthGate <span
+                class="tw-text-blue-600">Admin</span></a>
+        <div class="tw-flex tw-gap-8 tw-items-center tw-text-sm tw-font-bold tw-text-slate-600">
+            <a href="{% url 'admin_dashboard' %}" class="hover:tw-text-blue-600">Dashboard</a>
+            <a href="{% url 'admin_enquiries' %}" class="hover:tw-text-blue-600">Enquiries</a>
+            <a href="{% url 'admin_appointments' %}" class="tw-text-blue-600">Appointments</a>
+
+            <!-- Gallery Dropdown -->
+            <div class="tw-relative tw-group">
+                <button class="hover:tw-text-blue-600 tw-flex tw-items-center tw-gap-1.5 tw-transition-colors">
+                    Gallery <i
+                        class="bi bi-chevron-down tw-text-[10px] tw-transition-transform group-hover:tw-rotate-180"></i>
+                </button>
+                <div
+                    class="tw-absolute tw-top-[calc(100%+0.5rem)] tw-left-0 tw-w-48 tw-bg-white tw-border tw-border-slate-100 tw-rounded-2xl tw-shadow-2xl tw-opacity-0 tw-invisible group-hover:tw-opacity-100 group-hover:tw-visible tw-transition-all tw-duration-300 tw-translate-y-2 group-hover:tw-translate-y-0 tw-z-50 tw-overflow-hidden">
+                    <div class="tw-py-2">
+                        <a href="{% url 'admin_gallery_photos' %}"
+                            class="tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-3 hover:tw-bg-slate-50 tw-text-slate-600 hover:tw-text-blue-600 tw-transition-all">
+                            <i class="bi bi-images"></i> Photos
+                        </a>
+                        <a href="{% url 'admin_gallery_videos' %}"
+                            class="tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-3 hover:tw-bg-slate-50 tw-text-slate-600 hover:tw-text-blue-600 tw-transition-all">
+                            <i class="bi bi-play-circle-fill"></i> Videos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blogs Link -->
+            <a href="{% url 'admin_blogs' %}" class="hover:tw-text-blue-600 tw-transition-colors">Blogs</a>
+            <a href="{% url 'home' %}"
+                class="tw-bg-slate-100 tw-px-4 tw-py-2 tw-rounded-xl hover:tw-bg-slate-200 tw-transition-all">View
+                Site</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="tw-min-h-screen tw-bg-slate-50 tw-pt-32 tw-pb-20">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-6">
+        <div class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-items-center tw-mb-10 tw-gap-4">
+            <div>
+                <h1 class="tw-text-3xl tw-font-black tw-text-slate-900">Clinic <span
+                        class="tw-text-indigo-600">Appointments</span></h1>
+                <nav class="tw-flex tw-gap-2 tw-text-sm tw-text-slate-400 tw-mt-2">
+                    <a href="{% url 'admin_dashboard' %}" class="hover:tw-text-indigo-600">Dashboard</a>
+                    <span>/</span>
+                    <span class="tw-text-slate-600">Appointments</span>
+                </nav>
+            </div>
+            <a href="{% url 'admin_export' 'appointments' %}"
+                class="tw-bg-emerald-600 tw-text-white tw-px-6 tw-py-3 tw-rounded-xl tw-font-bold hover:tw-bg-emerald-700 tw-transition-all">
+                <i class="bi bi-file-earmark-excel"></i> Export Excel
+            </a>
+        </div>
+
+        <div
+            class="tw-bg-white tw-p-4 tw-rounded-[1.5rem] tw-shadow-sm tw-border tw-border-slate-100 tw-mb-10 tw-flex tw-flex-wrap tw-gap-3 tw-items-center">
+            <span class="tw-text-slate-400 tw-text-xs tw-font-black tw-uppercase tw-ml-4">Filter By:</span>
+            <a href="?date=&status="
+                class="tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold {% if not request.GET.date and not request.GET.status %}tw-bg-slate-900 tw-text-white{% else %}tw-bg-slate-100 tw-text-slate-600{% endif %}">All</a>
+            <a href="?date=today"
+                class="tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold {% if request.GET.date == 'today' %}tw-bg-indigo-600 tw-text-white{% else %}tw-bg-slate-100 tw-text-slate-600{% endif %}">Today</a>
+            <a href="?status=confirmed"
+                class="tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold {% if request.GET.status == 'confirmed' %}tw-bg-emerald-600 tw-text-white{% else %}tw-bg-slate-100 tw-text-slate-600{% endif %}">Confirmed</a>
+            <a href="?status=cancelled"
+                class="tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold {% if request.GET.status == 'cancelled' %}tw-bg-rose-600 tw-text-white{% else %}tw-bg-slate-100 tw-text-slate-600{% endif %}">Rejected</a>
+        </div>
+
+        <div class="tw-bg-white tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-slate-100 tw-overflow-hidden">
+            <div class=\"tw-overflow-x-auto\">
+                <table class="tw-w-full tw-text-left tw-border-collapse">
+                    <thead class="tw-bg-slate-50/50 tw-border-b tw-border-slate-100">
+                        <tr>
+                            <th class="tw-px-8 tw-py-6"><input type="checkbox" id="select-all" class="tw-w-5 tw-h-5">
+                            </th>
+                            <th class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase">
+                                Datetime / ID</th>
+                            <th class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase">
+                                Patient</th>
+                            <th class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase">
+                                Clinical Note</th>
+                            <th
+                                class="tw-px-8 tw-py-6 tw-text-[10px] tw-font-black tw-text-slate-400 tw-uppercase tw-text-center">
+                                Manage Status & Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tw-divide-y tw-divide-slate-50">
+                        {% for item in appointments %}
+                        <tr class="hover:tw-bg-slate-50/50 tw-transition-colors">
+                            <td class="tw-px-8 tw-py-6"><input type="checkbox" class="item-checkbox tw-w-5 tw-h-5"
+                                    data-id="{{ item.id }}"></td>
+                            <td class="tw-px-8 tw-py-6">
+                                <div class="tw-text-indigo-600 tw-font-black tw-text-[10px]">{{ item.id }}</div>
+                                <div class="tw-font-bold tw-text-slate-900 tw-text-sm">{{ item.date }}</div>
+                                <div class="tw-text-slate-400 tw-text-[10px] uppercase">{{ item.time_slot }}</div>
+                            </td>
+                            <td class="tw-px-8 tw-py-6">
+                                <div class="tw-font-bold tw-text-slate-900">{{ item.name }}</div>
+                                <div class="tw-text-slate-500 tw-text-xs">{{ item.phone }}</div>
+                            </td>
+                            <td class="tw-px-8 tw-py-6">
+                                <textarea
+                                    class="admin-notes tw-bg-slate-50 tw-border tw-border-slate-200 tw-rounded-xl tw-p-3 tw-text-[10px] tw-w-48 focus:tw-bg-white tw-outline-none tw-transition-all"
+                                    data-id="{{ item.id }}" placeholder="Notes...">{{ item.admin_notes }}</textarea>
+                            </td>
+                            <td class="tw-px-8 tw-py-6">
+                                <div class="tw-flex tw-flex-col tw-items-center tw-gap-3">
+                                    <div class="tw-flex tw-gap-2">
+                                        {% if item.status == 'requested' %}
+                                        <button onclick="appointmentAction('confirm', '{{ item.id }}')"
+                                            class="tw-w-10 tw-h-10 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-transition-all tw-bg-emerald-50 tw-text-emerald-600 hover:tw-bg-emerald-500 hover:tw-text-white tw-shadow-sm">
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                        <button onclick="appointmentAction('cancel', '{{ item.id }}')"
+                                            class="tw-w-10 tw-h-10 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-transition-all tw-bg-rose-50 tw-text-rose-600 hover:tw-bg-rose-500 hover:tw-text-white tw-shadow-sm">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                        {% else %}
+                                        <button disabled="disabled"
+                                            class="tw-w-10 tw-h-10 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-transition-all tw-bg-slate-100 tw-text-slate-400 tw-cursor-not-allowed">
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                        <button disabled="disabled"
+                                            class="tw-w-10 tw-h-10 tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-transition-all tw-bg-slate-100 tw-text-slate-400 tw-cursor-not-allowed">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                        {% endif %}
+                                    </div>
+                                    <div class="tw-mt-1">
+                                        {% if item.status == 'confirmed' %}
+                                        <span
+                                            class="tw-bg-emerald-100 tw-text-emerald-700 tw-px-4 tw-py-1.5 tw-rounded-full tw-text-[10px] tw-font-black tw-tracking-widest">CONFIRMED</span>
+                                        {% elif item.status == 'cancelled' %}
+                                        <span
+                                            class="tw-bg-rose-100 tw-text-rose-700 tw-px-4 tw-py-1.5 tw-rounded-full tw-text-[10px] tw-font-black tw-tracking-widest">REJECTED</span>
+                                        {% else %}
+                                        <span
+                                            class="tw-bg-blue-100 tw-text-blue-700 tw-px-4 tw-py-1.5 tw-rounded-full tw-text-[10px] tw-font-black tw-tracking-widest">PENDING</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5"
+                                class="tw-px-8 tw-py-20 tw-text-center tw-text-slate-400 tw-font-bold italic">No records
+                                found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tw-mt-8">
+            <button onclick="bulkDelete()"
+                class="tw-bg-slate-900 tw-text-white tw-px-8 tw-py-4 tw-rounded-2xl tw-font-bold hover:tw-bg-black tw-transition-all shadow-xl shadow-slate-900/10">Delete
+                Selection</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function appointmentAction(type, id) {
+        const notes = document.querySelector(`.admin-notes[data-id="${id}"]`).value;
+        const btn = event.currentTarget.closest('button');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split tw-animate-spin"></i>';
+
+        fetch('', {
+            method: 'POST',
+            headers: { 'X-CSRFToken': '{{ csrf_token }}', 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ 'action': type, 'appointment_id': id, 'notes': notes })
+        }).then(() => location.reload());
+    }
+
+    function bulkDelete() {
+        const ids = Array.from(document.querySelectorAll('.item-checkbox:checked')).map(c => c.dataset.id);
+        if (!ids.length) return alert('Select items first');
+        if (!confirm('Permanently delete selected items?')) return;
+
+        fetch('', {
+            method: 'POST',
+            headers: { 'X-CSRFToken': '{{ csrf_token }}', 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ 'action': 'delete', 'items[]': ids })
+        }).then(() => location.reload());
+    }
+
+    document.getElementById('select-all').onchange = (e) => {
+        document.querySelectorAll('.item-checkbox').forEach(c => c.checked = e.target.checked);
+    };
+</script>
+{% endblock %}

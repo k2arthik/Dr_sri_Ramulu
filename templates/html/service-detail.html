@@ -1,0 +1,737 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ service.title }} - {% endblock title %}
+
+{% block content %}
+
+<!-- Hero Header Section -->
+<section class="tw-w-full tw-pt-40 tw-pb-24 tw-bg-[#1e3a5f] tw-relative tw-overflow-hidden">
+    <!-- Decorative background element -->
+    <div
+        class="tw-absolute tw-top-0 tw-right-0 tw-w-[500px] tw-h-[500px] tw-bg-blue-600/10 tw-rounded-full -tw-mr-32 -tw-mt-32 tw-blur-3xl">
+    </div>
+    <div
+        class="tw-absolute tw-bottom-0 tw-left-0 tw-w-64 tw-h-64 tw-bg-blue-400/10 tw-rounded-full -tw-ml-20 -tw-mb-20 tw-blur-2xl">
+    </div>
+
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4 tw-relative tw-z-10">
+        <nav
+            class="tw-flex tw-gap-2 tw-text-blue-200/80 tw-text-sm tw-font-bold tw-uppercase tw-tracking-widest tw-mb-6">
+            <a href="{% url 'home' %}" class="hover:tw-text-white tw-transition-colors">Home</a>
+            <span>/</span>
+            <a href="{% url 'services' %}" class="hover:tw-text-white tw-transition-colors">Services</a>
+            <span>/</span>
+            <span class="tw-text-white">{{ service.title }}</span>
+        </nav>
+
+        <div class="tw-flex tw-items-center tw-gap-8 max-md:tw-flex-col max-md:tw-items-start">
+            <div
+                class="tw-w-20 tw-h-20 tw-bg-white/10 tw-backdrop-blur-md tw-rounded-3xl tw-flex tw-items-center tw-justify-center tw-shrink-0">
+                <i class="bi {{ service.icon }} tw-text-4xl tw-text-white"></i>
+            </div>
+            <h1 class="tw-text-6xl tw-font-bold tw-text-white tw-leading-tight max-md:tw-text-4xl">{{ service.title }}
+            </h1>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="tw-w-full tw-py-20 tw-bg-gray-50">
+    <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
+        <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-16">
+
+            <!-- Main Content Area -->
+            <div class="lg:tw-col-span-2 tw-space-y-12">
+                {% if service.title == 'Cardiac Imaging' %}
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Overview1</h2>
+                    <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-8">
+                        {{ service.description }}
+                    </p>
+                    <div class="tw-prose tw-max-w-none tw-text-gray-700 tw-leading-relaxed">
+                        <p class="tw-mb-6">
+                            Our {{ service.title }} module is designed to provide patients with the highest level of
+                            care through advanced diagnostic techniques and curative interventions. Under the leadership
+                            of Dr. Sri Ramulu K, we utilize protocol-driven approaches to ensure safety, efficacy, and
+                            rapid recovery.
+                        </p>
+                        <p>
+                            Each patient receives a personalized treatment chart, integrating the latest cardiovascular
+                            research with compassionate bedside care. Whether it's a routine screening or a complex
+                            life-saving procedure, our excellence remains consistent.
+                        </p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia magnam aliquid eius numquam
+                            nihil? Consequatur optio cupiditate, accusamus velit pariatur vel. Fuga aliquam iste quia
+                            porro sequi iusto, aliquid aspernatur.
+                            Nobis minus hic, atque nemo magnam harum laudantium fuga tempore esse! Excepturi quasi
+                            dignissimos ea eos qui libero, sequi adipisci tempora enim laborum at omnis natus iusto iste
+                            eveniet dolorum.
+                            Nobis ab labore optio minima nulla vel ea facere maiores tenetur, doloremque, deleniti
+                            facilis tempore consectetur numquam provident dolorem aperiam alias est, delectus quas?
+                            Laudantium numquam nisi totam dolor ipsa.
+                            Assumenda, nisi libero! Reiciendis est iste temporibus eos omnis. Odio quibusdam unde, fugit
+                            hic repellendus totam, porro corrupti doloremque expedita rerum eaque! Non provident sed ad
+                            sapiente numquam, enim nihil!
+                            Delectus dolore nisi itaque architecto voluptas atque vitae mollitia a, provident ex quasi!
+                            Laborum, voluptate cumque maiores distinctio assumenda accusantium incidunt vero impedit
+                            dignissimos voluptatem dolorem neque excepturi deleniti molestiae.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'TAVR/LAA Closure' %}
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Overview2</h2>
+                    <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-8">
+                        {{ service.description }}
+                    </p>
+                    <div class="tw-prose tw-max-w-none tw-text-gray-700 tw-leading-relaxed">
+                        <p class="tw-mb-6">
+                            Our {{ service.title }} module is designed to provide patients with the highest level of
+                            care through advanced diagnostic techniques and curative interventions. Under the leadership
+                            of Dr. Sri Ramulu K, we utilize protocol-driven approaches to ensure safety, efficacy, and
+                            rapid recovery.
+                        </p>
+                        <p>
+                            Each patient receives a personalized treatment chart, integrating the latest cardiovascular
+                            research with compassionate bedside care. Whether it's a routine screening or a complex
+                            life-saving procedure, our excellence remains consistent.
+                        </p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia magnam aliquid eius numquam
+                            nihil? Consequatur optio cupiditate, accusamus velit pariatur vel. Fuga aliquam iste quia
+                            porro sequi iusto, aliquid aspernatur.
+                            Nobis minus hic, atque nemo magnam harum laudantium fuga tempore esse! Excepturi quasi
+                            dignissimos ea eos qui libero, sequi adipisci tempora enim laborum at omnis natus iusto iste
+                            eveniet dolorum.
+                            Nobis ab labore optio minima nulla vel ea facere maiores tenetur, doloremque, deleniti
+                            facilis tempore consectetur numquam provident dolorem aperiam alias est, delectus quas?
+                            Laudantium numquam nisi totam dolor ipsa.
+                            Assumenda, nisi libero! Reiciendis est iste temporibus eos omnis. Odio quibusdam unde, fugit
+                            hic repellendus totam, porro corrupti doloremque expedita rerum eaque! Non provident sed ad
+                            sapiente numquam, enim nihil!
+                            Delectus dolore nisi itaque architecto voluptas atque vitae mollitia a, provident ex quasi!
+                            Laborum, voluptate cumque maiores distinctio assumenda accusantium incidunt vero impedit
+                            dignissimos voluptatem dolorem neque excepturi deleniti molestiae.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Chronic Total Occlusions' %}
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Overview3</h2>
+                    <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-8">
+                        {{ service.description }}
+                    </p>
+                    <div class="tw-prose tw-max-w-none tw-text-gray-700 tw-leading-relaxed">
+                        <p class="tw-mb-6">
+                            Our {{ service.title }} module is designed to provide patients with the highest level of
+                            care through advanced diagnostic techniques and curative interventions. Under the leadership
+                            of Dr. Sri Ramulu K, we utilize protocol-driven approaches to ensure safety, efficacy, and
+                            rapid recovery.
+                        </p>
+                        <p>
+                            Each patient receives a personalized treatment chart, integrating the latest cardiovascular
+                            research with compassionate bedside care. Whether it's a routine screening or a complex
+                            life-saving procedure, our excellence remains consistent.
+                        </p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia magnam aliquid eius numquam
+                            nihil? Consequatur optio cupiditate, accusamus velit pariatur vel. Fuga aliquam iste quia
+                            porro sequi iusto, aliquid aspernatur.
+                            Nobis minus hic, atque nemo magnam harum laudantium fuga tempore esse! Excepturi quasi
+                            dignissimos ea eos qui libero, sequi adipisci tempora enim laborum at omnis natus iusto iste
+                            eveniet dolorum.
+                            Nobis ab labore optio minima nulla vel ea facere maiores tenetur, doloremque, deleniti
+                            facilis tempore consectetur numquam provident dolorem aperiam alias est, delectus quas?
+                            Laudantium numquam nisi totam dolor ipsa.
+                            Assumenda, nisi libero! Reiciendis est iste temporibus eos omnis. Odio quibusdam unde, fugit
+                            hic repellendus totam, porro corrupti doloremque expedita rerum eaque! Non provident sed ad
+                            sapiente numquam, enim nihil!
+                            Delectus dolore nisi itaque architecto voluptas atque vitae mollitia a, provident ex quasi!
+                            Laborum, voluptate cumque maiores distinctio assumenda accusantium incidunt vero impedit
+                            dignissimos voluptatem dolorem neque excepturi deleniti molestiae.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Interventions for CHD' %}
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Overview4</h2>
+                    <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-8">
+                        {{ service.description }}
+                    </p>
+                    <div class="tw-prose tw-max-w-none tw-text-gray-700 tw-leading-relaxed">
+                        <p class="tw-mb-6">
+                            Our {{ service.title }} module is designed to provide patients with the highest level of
+                            care through advanced diagnostic techniques and curative interventions. Under the leadership
+                            of Dr. Sri Ramulu K, we utilize protocol-driven approaches to ensure safety, efficacy, and
+                            rapid recovery.
+                        </p>
+                        <p>
+                            Each patient receives a personalized treatment chart, integrating the latest cardiovascular
+                            research with compassionate bedside care. Whether it's a routine screening or a complex
+                            life-saving procedure, our excellence remains consistent.
+                        </p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia magnam aliquid eius numquam
+                            nihil? Consequatur optio cupiditate, accusamus velit pariatur vel. Fuga aliquam iste quia
+                            porro sequi iusto, aliquid aspernatur.
+                            Nobis minus hic, atque nemo magnam harum laudantium fuga tempore esse! Excepturi quasi
+                            dignissimos ea eos qui libero, sequi adipisci tempora enim laborum at omnis natus iusto iste
+                            eveniet dolorum.
+                            Nobis ab labore optio minima nulla vel ea facere maiores tenetur, doloremque, deleniti
+                            facilis tempore consectetur numquam provident dolorem aperiam alias est, delectus quas?
+                            Laudantium numquam nisi totam dolor ipsa.
+                            Assumenda, nisi libero! Reiciendis est iste temporibus eos omnis. Odio quibusdam unde, fugit
+                            hic repellendus totam, porro corrupti doloremque expedita rerum eaque! Non provident sed ad
+                            sapiente numquam, enim nihil!
+                            Delectus dolore nisi itaque architecto voluptas atque vitae mollitia a, provident ex quasi!
+                            Laborum, voluptate cumque maiores distinctio assumenda accusantium incidunt vero impedit
+                            dignissimos voluptatem dolorem neque excepturi deleniti molestiae.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Coronary Interventions' %}
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Overview5</h2>
+                    <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-8">
+                        {{ service.description }}
+                    </p>
+                    <div class="tw-prose tw-max-w-none tw-text-gray-700 tw-leading-relaxed">
+                        <p class="tw-mb-6">
+                            Our {{ service.title }} module is designed to provide patients with the highest level of
+                            care through advanced diagnostic techniques and curative interventions. Under the leadership
+                            of Dr. Sri Ramulu K, we utilize protocol-driven approaches to ensure safety, efficacy, and
+                            rapid recovery.
+                        </p>
+                        <p>
+                            Each patient receives a personalized treatment chart, integrating the latest cardiovascular
+                            research with compassionate bedside care. Whether it's a routine screening or a complex
+                            life-saving procedure, our excellence remains consistent.
+                        </p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia magnam aliquid eius numquam
+                            nihil? Consequatur optio cupiditate, accusamus velit pariatur vel. Fuga aliquam iste quia
+                            porro sequi iusto, aliquid aspernatur.
+                            Nobis minus hic, atque nemo magnam harum laudantium fuga tempore esse! Excepturi quasi
+                            dignissimos ea eos qui libero, sequi adipisci tempora enim laborum at omnis natus iusto iste
+                            eveniet dolorum.
+                            Nobis ab labore optio minima nulla vel ea facere maiores tenetur, doloremque, deleniti
+                            facilis tempore consectetur numquam provident dolorem aperiam alias est, delectus quas?
+                            Laudantium numquam nisi totam dolor ipsa.
+                            Assumenda, nisi libero! Reiciendis est iste temporibus eos omnis. Odio quibusdam unde, fugit
+                            hic repellendus totam, porro corrupti doloremque expedita rerum eaque! Non provident sed ad
+                            sapiente numquam, enim nihil!
+                            Delectus dolore nisi itaque architecto voluptas atque vitae mollitia a, provident ex quasi!
+                            Laborum, voluptate cumque maiores distinctio assumenda accusantium incidunt vero impedit
+                            dignissimos voluptatem dolorem neque excepturi deleniti molestiae.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Peripheral Vascular Interventions' %}
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Overview6</h2>
+                    <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-8">
+                        {{ service.description }}
+                    </p>
+                    <div class="tw-prose tw-max-w-none tw-text-gray-700 tw-leading-relaxed">
+                        <p class="tw-mb-6">
+                            Our {{ service.title }} module is designed to provide patients with the highest level of
+                            care through advanced diagnostic techniques and curative interventions. Under the leadership
+                            of Dr. Sri Ramulu K, we utilize protocol-driven approaches to ensure safety, efficacy, and
+                            rapid recovery.
+                        </p>
+                        <p>
+                            Each patient receives a personalized treatment chart, integrating the latest cardiovascular
+                            research with compassionate bedside care. Whether it's a routine screening or a complex
+                            life-saving procedure, our excellence remains consistent.
+                        </p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia magnam aliquid eius numquam
+                            nihil? Consequatur optio cupiditate, accusamus velit pariatur vel. Fuga aliquam iste quia
+                            porro sequi iusto, aliquid aspernatur.
+                            Nobis minus hic, atque nemo magnam harum laudantium fuga tempore esse! Excepturi quasi
+                            dignissimos ea eos qui libero, sequi adipisci tempora enim laborum at omnis natus iusto iste
+                            eveniet dolorum.
+                            Nobis ab labore optio minima nulla vel ea facere maiores tenetur, doloremque, deleniti
+                            facilis tempore consectetur numquam provident dolorem aperiam alias est, delectus quas?
+                            Laudantium numquam nisi totam dolor ipsa.
+                            Assumenda, nisi libero! Reiciendis est iste temporibus eos omnis. Odio quibusdam unde, fugit
+                            hic repellendus totam, porro corrupti doloremque expedita rerum eaque! Non provident sed ad
+                            sapiente numquam, enim nihil!
+                            Delectus dolore nisi itaque architecto voluptas atque vitae mollitia a, provident ex quasi!
+                            Laborum, voluptate cumque maiores distinctio assumenda accusantium incidunt vero impedit
+                            dignissimos voluptatem dolorem neque excepturi deleniti molestiae.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Pacemakers & Devices' %}
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinical Overview7</h2>
+                    <p class="tw-text-xl tw-text-gray-600 tw-leading-relaxed tw-mb-8">
+                        {{ service.description }}
+                    </p>
+                    <div class="tw-prose tw-max-w-none tw-text-gray-700 tw-leading-relaxed">
+                        <p class="tw-mb-6">
+                            Our {{ service.title }} module is designed to provide patients with the highest level of
+                            care through advanced diagnostic techniques and curative interventions. Under the leadership
+                            of Dr. Sri Ramulu K, we utilize protocol-driven approaches to ensure safety, efficacy, and
+                            rapid recovery.
+                        </p>
+                        <p>
+                            Each patient receives a personalized treatment chart, integrating the latest cardiovascular
+                            research with compassionate bedside care. Whether it's a routine screening or a complex
+                            life-saving procedure, our excellence remains consistent.
+                        </p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia magnam aliquid eius numquam
+                            nihil? Consequatur optio cupiditate, accusamus velit pariatur vel. Fuga aliquam iste quia
+                            porro sequi iusto, aliquid aspernatur.
+                            Nobis minus hic, atque nemo magnam harum laudantium fuga tempore esse! Excepturi quasi
+                            dignissimos ea eos qui libero, sequi adipisci tempora enim laborum at omnis natus iusto iste
+                            eveniet dolorum.
+                            Nobis ab labore optio minima nulla vel ea facere maiores tenetur, doloremque, deleniti
+                            facilis tempore consectetur numquam provident dolorem aperiam alias est, delectus quas?
+                            Laudantium numquam nisi totam dolor ipsa.
+                            Assumenda, nisi libero! Reiciendis est iste temporibus eos omnis. Odio quibusdam unde, fugit
+                            hic repellendus totam, porro corrupti doloremque expedita rerum eaque! Non provident sed ad
+                            sapiente numquam, enim nihil!
+                            Delectus dolore nisi itaque architecto voluptas atque vitae mollitia a, provident ex quasi!
+                            Laborum, voluptate cumque maiores distinctio assumenda accusantium incidunt vero impedit
+                            dignissimos voluptatem dolorem neque excepturi deleniti molestiae.</p>
+                    </div>
+                </div>
+                {% endif %}
+               <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Frequently Asked Question</h2>
+                     <div class="tw-space-y-4 tw-text-center tw-mb-20">
+            <!-- {% for faq in faqs %}
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>{{ faq.question }}</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="faq-answer tw-text-left tw-leading-relaxed">
+                    <p>{{ faq.answer }}</p>
+                </div>
+            </div>
+            {% endfor %} -->
+            {% if service.title == 'Cardiac Imaging' %}
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'TAVR/LAA Closure' %}
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Chronic Total Occlusions' %}
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Interventions for CHD' %}
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Coronary Interventions' %}
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Peripheral Vascular Interventions' %}
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+                {% elif service.title == 'Pacemakers & Devices' %}
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Why choose Lux Hospitals?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>What services does Lux Hospitals Hyderabad provide?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+                    </div>
+                </div> 
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">  
+                        <span>Which hospitals offer personalized and luxurious treatments?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer tw-text-left tw-leading-relaxed">
+                        <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+               </div>
+                <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
+                    <!-- Feature box 1 -->
+                    <div class="tw-bg-blue-600 tw-p-8 tw-rounded-[2rem] tw-text-white tw-shadow-lg">
+                        <i class="bi bi-shield-check-fill tw-text-3xl tw-mb-4 tw-block"></i>
+                        <h4 class="tw-text-xl tw-font-bold tw-mb-2">Advanced Safety</h4>
+                        <p class="tw-text-blue-100/90">Rigorous clinical protocols and sterile environments for all
+                            interventional procedures.</p>
+                    </div>
+                    <!-- Feature box 2 -->
+                    <div class="tw-bg-[#1e3a5f] tw-p-8 tw-rounded-[2rem] tw-text-white tw-shadow-lg">
+                        <i class="bi bi-speedometer2 tw-text-3xl tw-mb-4 tw-block"></i>
+                        <h4 class="tw-text-xl tw-font-bold tw-mb-2">Rapid Results</h4>
+                        <p class="tw-text-blue-100/90">Timely diagnostics and intervention to minimize cardiac muscle
+                            damage and improve prognosis.</p>
+                    </div>
+                </div>
+
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h2 class="tw-text-3xl tw-font-bold tw-text-[#1e3a5f] tw-mb-8">Key Patient Benefits</h2>
+                    <ul class="tw-space-y-6">
+                        <li class="tw-flex tw-gap-4">
+                            <div
+                                class="tw-w-6 tw-h-6 tw-bg-blue-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-shrink-0 tw-mt-1">
+                                <i class="bi bi-check tw-text-blue-600 tw-font-bold"></i>
+                            </div>
+                            <div>
+                                <h5 class="tw-text-lg tw-font-bold tw-text-gray-800">State-of-the-Art Technology</h5>
+                                <p class="tw-text-gray-600">Access to the latest imaging and interventional tools at
+                                    KIMS Hospital.</p>
+                            </div>
+                        </li>
+                        <li class="tw-flex tw-gap-4">
+                            <div
+                                class="tw-w-6 tw-h-6 tw-bg-blue-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-shrink-0 tw-mt-1">
+                                <i class="bi bi-check tw-text-blue-600 tw-font-bold"></i>
+                            </div>
+                            <div>
+                                <h5 class="tw-text-lg tw-font-bold tw-text-gray-800">Expert Consultant Care</h5>
+                                <p class="tw-text-gray-600">Direct consultation and procedure management by Dr. Sri
+                                    Ramulu K.</p>
+                            </div>
+                        </li>
+                        <li class="tw-flex tw-gap-4">
+                            <div
+                                class="tw-w-6 tw-h-6 tw-bg-blue-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-shrink-0 tw-mt-1">
+                                <i class="bi bi-check tw-text-blue-600 tw-font-bold"></i>
+                            </div>
+                            <div>
+                                <h5 class="tw-text-lg tw-font-bold tw-text-gray-800">Comprehensive Pre/Post Care</h5>
+                                <p class="tw-text-gray-600">Detailed follow-up plans to ensure long-term heart health
+                                    success.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="tw-space-y-8">
+                <!-- NEW: Emergency Banner (Prioritized at the top) -->
+                <div
+                    class="tw-bg-white tw-p-8 tw-rounded-[2.5rem] tw-border-2 tw-border-red-100 tw-shadow-xl tw-relative tw-overflow-hidden">
+                    <div
+                        class="tw-absolute tw-top-0 tw-right-0 tw-bg-red-500 tw-text-white tw-text-[10px] tw-px-3 tw-py-1 tw-font-bold tw-rounded-bl-xl">
+                        24/7 EMERGENCY</div>
+                    <div class="tw-flex tw-items-center tw-gap-6">
+                        <div
+                            class="tw-w-14 tw-h-14 tw-bg-red-50 tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-shrink-0">
+                            <i class="bi bi-telephone-outbound-fill tw-text-2xl tw-text-red-600"></i>
+                        </div>
+                        <div class="tw-text-left">
+                            <h4 class="tw-text-sm tw-font-bold tw-text-gray-500 tw-uppercase tw-tracking-wider">Cardiac
+                                Helpline</h4>
+                            <p class="tw-text-3xl tw-font-black tw-text-red-700">1066</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW: Quality Standards (Credibility next) -->
+                <div
+                    class="tw-bg-gradient-to-br tw-from-[#1e3a5f] tw-to-blue-900 tw-p-10 tw-rounded-[2.5rem] tw-text-white tw-shadow-2xl">
+                    <h4 class="tw-text-xl tw-font-bold tw-mb-6">Clinical Excellence</h4>
+                    <div class="tw-space-y-6">
+                        <div class="tw-flex tw-gap-4">
+                            <i class="bi bi-patch-check-fill tw-text-2xl tw-text-blue-300"></i>
+                            <p class="tw-text-sm tw-text-blue-100">NABH Accredited Tertiary Facility</p>
+                        </div>
+                        <div class="tw-flex tw-gap-4">
+                            <i class="bi bi-award-fill tw-text-2xl tw-text-blue-300"></i>
+                            <p class="tw-text-sm tw-text-blue-100">Gold Standard Infection Control</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book CTA -->
+                <div
+                    class="tw-bg-blue-600 tw-p-10 tw-rounded-[2.5rem] tw-text-center tw-shadow-2xl tw-relative tw-overflow-hidden group">
+                    <div
+                        class="tw-absolute tw-inset-0 tw-bg-white/10 tw-translate-y-full group-hover:tw-translate-y-0 tw-transition-transform tw-duration-500">
+                    </div>
+                    <div class="tw-relative tw-z-10">
+                        <h4 class="tw-text-2xl tw-font-bold tw-text-white tw-mb-4">Need this Procedure?</h4>
+                        <p class="tw-text-blue-100 tw-mb-8">Talk to our experts for a personalized assessment.</p>
+                        <a href="{% url 'contact-us' %}"
+                            class="tw-block tw-w-full tw-py-4 tw-bg-white tw-text-blue-600 tw-font-bold tw-rounded-2xl hover:tw-bg-blue-50 tw-transition-all tw-shadow-lg">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Other Services -->
+                <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                    <h4 class="tw-text-xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Our Specializations</h4>
+                    <div class="tw-flex tw-flex-col tw-gap-4">
+                        <div class="tw-text-sm tw-text-gray-600 tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-circle-fill tw-text-[6px] tw-text-blue-600"></i>
+                            Advanced Angioplasty
+                        </div>
+                        <div class="tw-text-sm tw-text-gray-600 tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-circle-fill tw-text-[6px] tw-text-blue-600"></i>
+                            Valvular Interventions
+                        </div>
+                        <div class="tw-text-sm tw-text-gray-600 tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-circle-fill tw-text-[6px] tw-text-blue-600"></i>
+                            Pediatric Cardiology
+                        </div>
+                        <a href="{% url 'services' %}"
+                            class="tw-mt-4 tw-text-blue-600 tw-font-bold hover:tw-underline tw-flex tw-items-center tw-justify-between">
+                            Explore All <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Full Width Trust Section above footer - Increased spacing -->
+        <div
+            class="tw-mt-32 tw-pt-12 tw-border-t tw-border-gray-100 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-8">
+            <!-- Patient Guidelines -->
+            <div
+                class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100 tw-relative tw-overflow-hidden">
+                <div class="tw-absolute -tw-bottom-4 -tw-right-4 tw-opacity-5">
+                    <i class="bi bi-book-half tw-text-8xl"></i>
+                </div>
+                <h4 class="tw-text-xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Patient Guidelines</h4>
+                <div class="tw-space-y-4">
+                    <a href="#" class="tw-flex tw-items-center tw-justify-between tw-group">
+                        <span class="tw-text-sm tw-text-gray-600 group-hover:tw-text-blue-600">Pre-Procedure
+                            Guide</span>
+                        <i class="bi bi-file-earmark-pdf tw-text-red-500"></i>
+                    </a>
+                    <div class="tw-h-[1px] tw-bg-gray-50"></div>
+                    <a href="#" class="tw-flex tw-items-center tw-justify-between tw-group">
+                        <span class="tw-text-sm tw-text-gray-600 group-hover:tw-text-blue-600">Post-Care
+                            Lifestyle</span>
+                        <i class="bi bi-file-earmark-pdf tw-text-red-500"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Clinical Record -->
+            <div
+                class="tw-bg-[#1e3a5f] tw-p-10 tw-rounded-[2.5rem] tw-text-white tw-shadow-2xl tw-relative tw-flex tw-flex-col tw-justify-center">
+                <h4 class="tw-text-lg tw-font-bold tw-mb-6 tw-text-center">Clinical Excellence Record</h4>
+                <div class="tw-grid tw-grid-cols-2 tw-gap-4">
+                    <div class="tw-text-center tw-p-4 tw-bg-white/5 tw-rounded-2xl">
+                        <p class="tw-text-3xl tw-font-black tw-text-blue-400">99.2%</p>
+                        <p class="tw-text-[10px] tw-text-blue-200">Success Rate</p>
+                    </div>
+                    <div class="tw-text-center tw-p-4 tw-bg-white/5 tw-rounded-2xl">
+                        <p class="tw-text-3xl tw-font-black tw-text-blue-400">24h</p>
+                        <p class="tw-text-[10px] tw-text-blue-200">ICU Support</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clinic Info (Moved here for better line alignment) -->
+            <div class="tw-bg-white tw-p-10 tw-rounded-[2.5rem] tw-shadow-xl tw-border tw-border-gray-100">
+                <h4 class="tw-text-xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6">Clinic Information</h4>
+                <div class="tw-space-y-6">
+                    <div class="tw-flex tw-gap-4">
+                        <i class="bi bi-geo-alt tw-text-blue-600 tw-text-xl"></i>
+                        <p class="tw-text-sm tw-text-gray-600">KIMS Hospital, Gachibowli<br>Hyderabad, Telangana</p>
+                    </div>
+                    <div class="tw-flex tw-gap-4">
+                        <i class="bi bi-telephone tw-text-blue-600 tw-text-xl"></i>
+                        <p class="tw-text-sm tw-text-gray-600">+91 999 000 1111</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+{% block scripts %}
+<script>
+document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+        const item = button.parentElement;
+
+        // Close others (optional)
+        document.querySelectorAll(".faq-item").forEach(i => {
+            if (i !== item) i.classList.remove("active");
+        });
+
+        // Toggle current
+        item.classList.toggle("active");
+    });
+});
+</script>
+{% endblock scripts %}

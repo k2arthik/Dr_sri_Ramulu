@@ -1,0 +1,240 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="tw-bg-gray-50 tw-min-h-screen tw-py-16">
+    <div class="tw-container tw-mx-auto tw-px-4 tw-max-w-7xl">
+        <div class="tw-text-center tw-mb-16">
+            <h1 class="tw-text-4xl tw-font-bold tw-text-gray-900 tw-mb-4 tw-tracking-tight">Schedule Your Appointment
+            </h1>
+            <p class="tw-text-xl tw-text-gray-600 tw-max-w-2xl tw-mx-auto">Book a consultation with our specialists.
+                Select a service, date, and time that works for you.</p>
+        </div>
+
+        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-12 tw-items-start tw-justify-center">
+            <!-- Left Side: Booking Form -->
+            <div class="tw-w-full lg:tw-w-5/12">
+                <div class="tw-bg-white tw-rounded-2xl tw-shadow-xl tw-overflow-hidden tw-border tw-border-gray-100">
+                    <div class="tw-bg-[#1e3a5f] tw-px-8 tw-py-6">
+                        <h2 class="tw-text-2xl tw-font-semibold tw-text-white tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-calendar-check"></i> Appointment Details
+                        </h2>
+                    </div>
+
+                    <form id="appointmentForm" class="tw-p-8 tw-space-y-6">
+                        {% csrf_token %}
+
+                        <div class="tw-space-y-4">
+                            <div>
+                                <label for="name"
+                                    class="tw-block tw-text-sm tw-font-semibold tw-text-gray-700 tw-mb-1">Full
+                                    Name</label>
+                                <div class="tw-relative">
+                                    <span class="tw-absolute tw-left-4 tw-top-3.5 tw-text-gray-400"><i
+                                            class="bi bi-person"></i></span>
+                                    <input type="text" id="name" name="name" required
+                                        class="tw-w-full tw-pl-10 tw-pr-4 tw-py-3 tw-bg-gray-50 tw-border tw-border-gray-200 tw-rounded-xl focus:tw-ring-2 focus:tw-ring-blue-500 tw-outline-none"
+                                        placeholder="Enter your full name">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email"
+                                    class="tw-block tw-text-sm tw-font-semibold tw-text-gray-700 tw-mb-1">Email
+                                    Address</label>
+                                <div class="tw-relative">
+                                    <span class="tw-absolute tw-left-4 tw-top-3.5 tw-text-gray-400"><i
+                                            class="bi bi-envelope"></i></span>
+                                    <input type="email" id="email" name="email" required
+                                        class="tw-w-full tw-pl-10 tw-pr-4 tw-py-3 tw-bg-gray-50 tw-border tw-border-gray-200 tw-rounded-xl focus:tw-ring-2 focus:tw-ring-blue-500 tw-outline-none"
+                                        placeholder="your@email.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="phone"
+                                    class="tw-block tw-text-sm tw-font-semibold tw-text-gray-700 tw-mb-1">Phone
+                                    Number</label>
+                                <div class="tw-relative">
+                                    <span class="tw-absolute tw-left-4 tw-top-3.5 tw-text-gray-400"><i
+                                            class="bi bi-telephone"></i></span>
+                                    <input type="tel" id="phone" name="phone" required
+                                        class="tw-w-full tw-pl-10 tw-pr-4 tw-py-3 tw-bg-gray-50 tw-border tw-border-gray-200 tw-rounded-xl focus:tw-ring-2 focus:tw-ring-blue-500 tw-outline-none"
+                                        placeholder="+91 98765 43210">
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="tw-border-gray-100 tw-my-6">
+
+                        <div class="tw-space-y-4">
+                            <div>
+                                <label for="service"
+                                    class="tw-block tw-text-sm tw-font-semibold tw-text-gray-700 tw-mb-1">Select
+                                    Service</label>
+                                <div class="tw-relative">
+                                    <span class="tw-absolute tw-left-4 tw-top-3.5 tw-text-gray-400"><i
+                                            class="bi bi-heart-pulse"></i></span>
+                                    <select id="service" name="service" required
+                                        class="tw-w-full tw-pl-10 tw-pr-10 tw-py-3 tw-bg-gray-50 tw-border tw-border-gray-200 tw-rounded-xl focus:tw-ring-2 focus:tw-ring-blue-500 tw-outline-none tw-appearance-none tw-cursor-pointer">
+                                        <option value="" disabled selected>Choose a specialization</option>
+                                        {% for service in services %}
+                                        <option value="{{ service }}">{{ service }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <span
+                                        class="tw-absolute tw-right-4 tw-top-3.5 tw-text-gray-400 tw-pointer-events-none"><i
+                                            class="bi bi-chevron-down"></i></span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="date"
+                                    class="tw-block tw-text-sm tw-font-semibold tw-text-gray-700 tw-mb-1">Preferred
+                                    Date</label>
+                                <div class="tw-relative">
+                                    <span class="tw-absolute tw-left-4 tw-top-3.5 tw-text-gray-400"><i
+                                            class="bi bi-calendar"></i></span>
+                                    <input type="date" id="date" name="date" required value="{{ selected_date }}"
+                                        min="{{ today }}" max="2030-12-31"
+                                        class="tw-w-full tw-pl-10 tw-pr-4 tw-py-3 tw-bg-gray-50 tw-border tw-border-gray-200 tw-rounded-xl focus:tw-ring-2 focus:tw-ring-blue-500 tw-outline-none tw-cursor-pointer">
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="time_slot" name="time_slot" required>
+
+                        <div id="form-errors"
+                            class="tw-bg-red-50 tw-text-red-600 tw-px-4 tw-py-3 tw-rounded-lg tw-text-sm tw-hidden tw-border tw-border-red-100 tw-flex tw-items-center tw-gap-2">
+                            <i class="bi bi-exclamation-circle-fill"></i> <span></span>
+                        </div>
+
+                        <button type="submit" id="submitBtn"
+                            class="tw-w-full tw-bg-[#1e3a5f] hover:tw-bg-blue-800 tw-text-white tw-font-bold tw-py-4 tw-rounded-xl tw-shadow-lg tw-transition-all tw-duration-200 hover:tw--translate-y-0.5 focus:tw-outline-none focus:tw-ring-4 focus:tw-ring-blue-900/30">
+                            Confirm Booking
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Side: Time Slots -->
+            <div class="tw-w-full lg:tw-w-6/12 xl:tw-w-5/12">
+                <div
+                    class="tw-bg-white tw-rounded-2xl tw-shadow-xl tw-overflow-hidden tw-border tw-border-gray-100 tw-h-full">
+                    <div class="tw-bg-gray-50 tw-px-8 tw-py-6 tw-border-b tw-border-gray-100">
+                        <h3 class="tw-text-xl tw-font-semibold tw-text-gray-800 tw-flex tw-items-center tw-gap-2">
+                            <i class="bi bi-clock"></i> Available Time Slots
+                        </h3>
+                        <p class="tw-text-gray-500 tw-text-sm tw-mt-1">Please select the time slot that suits you best.
+                        </p>
+                    </div>
+
+                    <div class="tw-p-8">
+                        <div class="tw-grid tw-grid-cols-2 sm:tw-grid-cols-3 tw-gap-4" id="slots-container">
+                            {% for time_val in time_slots %}
+                            <button type="button"
+                                class="time-slot-btn tw-group tw-relative tw-px-4 tw-py-4 tw-rounded-xl tw-border tw-border-gray-200 tw-bg-white hover:tw-border-[#1e3a5f] hover:tw-shadow-md tw-transition-all tw-duration-200 tw-text-center focus:tw-outline-none
+                                    {% if time_val in taken_slots %}tw-bg-gray-100 tw-opacity-50 tw-cursor-not-allowed taken-slot{% endif %}"
+                                data-time="{{time_val}}" {% if time_val in taken_slots %}disabled{% endif %}>
+                                <span
+                                    class="tw-relative tw-z-10 tw-text-gray-300 tw-font-medium slot-text">{{time_val}}</span>
+                                {% if time_val in taken_slots %}
+                                <div
+                                    class="tw-absolute tw-inset-0 tw-flex tw-items-center tw-justify-center tw-bg-gray-100 tw-rounded-xl tw-z-20">
+                                    <span
+                                        class="tw-text-[10px] tw-font-black tw-text-gray-500 tw-uppercase tw-tracking-widest">Booked</span>
+                                </div>
+                                {% else %}
+                                <div class="tw-absolute tw-top-1 tw-right-1 tw-opacity-0 check-icon tw-text-[#1e3a5f]">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                                {% endif %}
+                            </button>
+                            {% endfor %}
+                        </div>
+
+                        <div id="slot-error"
+                            class="tw-text-red-500 tw-text-sm tw-mt-6 tw-hidden tw-text-center tw-bg-red-50 tw-py-2 tw-rounded-lg">
+                            Please select a time slot.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .time-slot-btn.selected {
+        border-color: #1e3a5f !important;
+        background-color: #eff6ff !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .time-slot-btn.selected .slot-text {
+        color: #1e3a5f !important;
+        font-weight: 700 !important;
+    }
+
+    .time-slot-btn.selected .check-icon {
+        opacity: 1 !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const slots = document.querySelectorAll('.time-slot-btn');
+        const timeInput = document.getElementById('time_slot');
+        const slotError = document.getElementById('slot-error');
+
+        const dateInput = document.getElementById('date');
+        dateInput.addEventListener('change', function () {
+            window.location.href = `?date=${this.value}`;
+        });
+
+        slots.forEach(slot => {
+            if (slot.classList.contains('taken-slot')) return;
+            slot.addEventListener('click', function () {
+                slots.forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+                timeInput.value = this.dataset.time;
+                slotError.classList.add('hidden');
+            });
+        });
+
+        const form = document.getElementById('appointmentForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!timeInput.value) {
+                slotError.classList.remove('hidden');
+                return;
+            }
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Processing...';
+
+            const formData = new FormData(form);
+            fetch("{% url 'appointments_api' %}", {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) window.location.href = "{% url 'contact-success' %}";
+                    else {
+                        alert(data.error || 'Booking failed');
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = 'Confirm';
+                    }
+                })
+                .catch(() => {
+                    alert('Network Error');
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Confirm';
+                });
+        });
+    });
+</script>
+{% endblock %}

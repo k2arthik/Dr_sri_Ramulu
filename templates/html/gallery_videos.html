@@ -1,0 +1,98 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block title %}Gallery - Videos - {% endblock title %}
+
+{% block content %}
+<section class="tw-w-full tw-py-24 tw-px-[5%] tw-bg-gray-50">
+    <div class="tw-max-w-5xl tw-mx-auto">
+        <div class="tw-text-center tw-mb-16">
+            <h1 class="tw-text-5xl tw-font-bold tw-text-[#1e3a5f] tw-mb-4">Video Gallery</h1>
+            <div class="tw-w-20 tw-h-1 tw-bg-blue-600 tw-mx-auto"></div>
+        </div>
+
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2  tw-gap-10">
+            <!-- {% for video in videos %}
+            <div
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class=" tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/{{ video.video_id }}?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            {% empty %}
+            <div class="tw-col-span-full tw-text-center tw-py-12">
+                <p class="tw-text-gray-500 tw-text-lg">No videos in the gallery yet.</p>
+            </div>
+            {% endfor %} -->
+            <!-- video1 -->
+            <div
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class=" tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/wdNRgtvNcYg?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- video2 -->
+            <div
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class=" tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/m0CaJ7RgYYc?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- video3 -->
+            <div
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class=" tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/Kv2GKS1NuDI?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- video4 -->
+            <div
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class=" tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/_fZYUtRgYRQ?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- video5 -->
+            <div
+                class="tw-group tw-rounded-3xl tw-overflow-hidden tw-shadow-2xl  tw-bg-black tw-border-4 tw-border-white hover:tw-border-red-100 tw-transition-all tw-duration-500 hover:-tw-translate-y-2">
+                <div id="youtube_card" class=" tw-bg-slate-900"style=" width: 500px;height: 281px;" >
+                    <iframe
+                        src="https://www.youtube.com/embed/CY8Bc8m4YeY?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+                        class="tw-w-full tw-h-full" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+           
+            
+        </div>
+    </div>
+</section>
+{% endblock content %}
