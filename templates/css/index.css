@@ -15,7 +15,7 @@
 }
 
 /* video resolution */
-#youtube_card{
+#youtube_card {
     width: 570px;
     height: 310px;
 }
@@ -592,10 +592,10 @@ header>.collapsable-header {
         opacity: 0;
         height: 100vh;
         height: 100dvh;
-        width:100vw;
+        width: 100vw;
         justify-content: space-evenly;
         padding: 5%;
-        place-items:start;
+        place-items: start;
         background-color: #ffffff;
         color: #000000;
         overflow-y: auto;
@@ -642,6 +642,6 @@ header>.collapsable-header {
     transition: transform 0.3s ease;
 }
 
-#video-container > :nth-child(n+5) {
+#video-container> :nth-child(n+5) {
     display: none;
 }

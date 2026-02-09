@@ -179,7 +179,8 @@
 <section class="tw-w-full tw-pt-32 tw-pb-16 tw-bg-white">
     <div class="tw-max-w-7xl tw-mx-auto tw-px-4">
         <div class="tw-text-center tw-mb-20">
-            <h1 class="tw-text-6xl max-md:tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6 fade-in-up">Frequently Asked Question</h1>
+            <h1 class="tw-text-6xl max-md:tw-text-4xl tw-font-bold tw-text-[#1e3a5f] tw-mb-6 fade-in-up">Frequently
+                Asked Question</h1>
             <div class="tw-w-32 tw-h-1.5 tw-bg-[#1e3a5f] tw-mx-auto tw-rounded-full fade-in-up delay-100"></div>
         </div>
 
@@ -197,31 +198,31 @@
             {% endfor %}
         </div> -->
         <div class="faq-item">
-                <button class="faq-question">  
-                     <span>Why choose Lux Hospitals?</span>
-                    <i class="bi bi-chevron-down"></i>
-                </button>
-                <div class="faq-answer tw-text-left tw-leading-relaxed">
-                     <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
-                </div>
+            <button class="faq-question">
+                <span>Why choose Lux Hospitals?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-answer tw-bg-gray-100 tw-rounded-2xl tw-text-left tw-leading-relaxed">
+                <p>Lux Hospitals offers world-class healthcare with advanced technology.</p>
+            </div>
         </div>
-         <div class="faq-item">
-                <button class="faq-question">  
-                     <span>What services does Lux Hospitals Hyderabad provide?</span>
-                    <i class="bi bi-chevron-down"></i>
-                </button>
-                <div class="faq-answer tw-text-left tw-leading-relaxed">
-                     <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
-                </div>
-        </div> 
         <div class="faq-item">
-                <button class="faq-question">  
-                     <span>Which hospitals offer personalized and luxurious treatments?</span>
-                    <i class="bi bi-chevron-down"></i>
-                </button>
-                <div class="faq-answer tw-text-left tw-leading-relaxed">
-                     <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
-                </div>
+            <button class="faq-question">
+                <span>What services does Lux Hospitals Hyderabad provide?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-answer tw-bg-gray-100 tw-rounded-2xl tw-text-left tw-leading-relaxed">
+                <p>We provide cardiology, neurology, orthopedics, diagnostics, and emergency care.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Which hospitals offer personalized and luxurious treatments?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-answer tw-bg-gray-100 tw-rounded-2xl tw-text-left tw-leading-relaxed">
+                <p>Lux Hospitals combines personalized treatment with premium patient experience.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -243,19 +244,19 @@
     document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 </script>
 <script>
-document.querySelectorAll(".faq-question").forEach(button => {
-    button.addEventListener("click", () => {
-        const item = button.parentElement;
+    document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", () => {
+            const item = button.parentElement;
 
-        // Close others (optional)
-        document.querySelectorAll(".faq-item").forEach(i => {
-            if (i !== item) i.classList.remove("active");
+            // Close others (optional)
+            document.querySelectorAll(".faq-item").forEach(i => {
+                if (i !== item) i.classList.remove("active");
+            });
+
+            // Toggle current
+            item.classList.toggle("active");
         });
-
-        // Toggle current
-        item.classList.toggle("active");
     });
-});
 </script>
 
 <style>
@@ -281,6 +282,5 @@ document.querySelectorAll(".faq-question").forEach(button => {
     .delay-300 {
         transition-delay: 0.3s;
     }
-    
 </style>
 {% endblock scripts %}

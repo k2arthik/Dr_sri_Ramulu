@@ -15,14 +15,14 @@ window.addEventListener("load", () => {
  * Fetches the country codes json file
  * @returns JS object
  */
-async function fetchCountryCodes(){
+async function fetchCountryCodes() {
 
-    try{
+    try {
         const response = await fetch(`${STATIC_URL}assets/json/phone-codes.json`)
 
         return await response.json()
-    }catch(e){
-        return 
+    } catch (e) {
+        return
     }
 }
 
